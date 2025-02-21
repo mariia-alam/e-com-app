@@ -1,0 +1,15 @@
+{
+  "name": "e-com-back-app",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "maria alam",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server db.json --port 5000"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}

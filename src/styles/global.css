@@ -1,0 +1,19 @@
+:root {
+  --primary-color: #42b883;
+  --secondary-color: #347474;
+  --accent-color: #35495e;
+  --background-color: #ff7e67;
+}
+.active{
+    /* text-decoration:underline; */
+}
+.notFound{
+    padding-top:15%;
+    text-align: center;
+}
+.notFound h1 {
+    font-size: 130px;
+}
+.notFound p {
+    dont-size:50px;
+}
