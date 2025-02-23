@@ -9,6 +9,8 @@ import About from '@pages/About';
 import Login from '@pages/Login';
 import Register from '@pages/Register';
 import Error from '../pages/Error';
+import { CategoriesLoader } from './loaders/CategoriesLoader';
+import { ProductsLoader } from './loaders/productsLoader';
 
 const router = createBrowserRouter([{
     path:"/",
@@ -21,12 +23,14 @@ const router = createBrowserRouter([{
         },
         {
             path:"categories",
-            element: <Categories/>
+            element: <Categories/>,
+            loader: CategoriesLoader,
         },
         {
-            path:"products/:prefix",
+            path:"categories/products/:prefix",
             element: <Products/>,
-            loader:({params})=>{
+            // loader: ProductsLoader,
+            loader: async({params})=>{
                 if(
                     typeof(params.prefix) !== "string" ||
                     !/^[a-z]+$/i.test(params.prefix)
@@ -36,8 +40,7 @@ const router = createBrowserRouter([{
                         status: 400}
                     )
                 }
-                console.log(params.prefix);
-                return true
+                return await ProductsLoader(params.prefix);
             }
         },
         {

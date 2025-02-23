@@ -24,7 +24,6 @@ export default function Header() {
                         <Nav className="mi-auto">
                             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                             <Nav.Link  as={NavLink} to="/categories">Categories</Nav.Link>
-                            <Nav.Link  as={NavLink} to="/products/s">Products</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">About us</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">

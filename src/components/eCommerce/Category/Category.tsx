@@ -1,16 +1,22 @@
+import { Tcategory } from "@customtypes/categories";
 import styles from "./styles.module.css";
 const { category, categoryImg, categoryTitle } = styles;
+import { Link } from "react-router-dom";
 
-const Category = () => {
+
+const Category = ({title, img, prefix}: Tcategory) => {
+
     return (
-        <div className={category}>
-        <div className={categoryImg}>
-            <img
-src="https://static.vecteezy.com/system/resources/thumbnails/034/324/091/small/baby-wearing-white-shirt-bodysuit-mockup-at-gray-background-design-onesie-template-print-presentation-mock-up-ai-generated-free-photo.jpeg"            alt=""
-            />
-        </div>
-        <h4 className={categoryTitle}>Title</h4>
-        </div>
+            <div className={category}>
+                <Link to={`/categories/products/${prefix}`}>
+                    <div className={categoryImg}>
+                        <img
+                            src={img}  alt=""
+                        />
+                    </div>
+                    <h4 className={categoryTitle}>{title}</h4>
+                </Link>
+            </div>
     );
 };
 

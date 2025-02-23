@@ -3,6 +3,7 @@
   --secondary-color: #347474;
   --accent-color: #35495e;
   --background-color: #ff7e67;
+  --gray-color:lightgray;
 }
 .active{
     /* text-decoration:underline; */
