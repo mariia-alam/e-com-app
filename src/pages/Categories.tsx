@@ -1,26 +1,31 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Category } from "@components/eCommerce";
-import { useAppSelector } from "@store/hooks";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
+import { useEffect } from "react";
+import { actGetCategories } from "@store/categories/categoriesSlice";
+import { Loading } from "@components/feedback";
+import { GridList } from "@components/common";
+import { Tcategory } from "@customtypes/categories";
 
 const Categories = () => {
-  const {loading, error ,records} = useAppSelector(state=>state.categories);
+  const dispatch = useAppDispatch();
+  const { loading, error, records } = useAppSelector((state) => state.categories);
 
-  const categoriesList =
-  records.length> 0
-  ? records.map((record)=>{
-      return(
-        <Col key={record.id} xs={4} md={3}  className="d-flex justify-content-center mb-5 mt-2">
-          <Category title={record.title} img={record.img} id={record.id} prefix={record.prefix} {...records} />
-        </Col>
-      );
-  })
-  : "there are no gategories";
+  useEffect(() => {
+    if (!records.length) {
+      dispatch(actGetCategories());
+    }
+  }, [dispatch, records]);
+
+
   return (
-    <Container>
-      <Row>
-        {categoriesList}
-      </Row>
-    </Container>
+      <Container>
+        <Loading status={loading} error={error}>
+          <GridList records={records} renderItem={(record : Tcategory) =>
+                    <Category title={record.title} img={record.img} id={record.id} prefix={record.prefix} />
+          }/>
+        </Loading>
+      </Container>
   );
 };
 

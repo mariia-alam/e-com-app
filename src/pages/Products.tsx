@@ -1,28 +1,37 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Product } from "@components/eCommerce";
-import { useAppSelector } from "@store/hooks";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
+import { actGetProductsByPrefix, productCleanup } from "@store/products/productsSlice";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Loading } from "@components/feedback";
+import { GridList } from "@components/common";
+import { Tproducts } from "@customtypes/products";
 const Products = () => {
-  // const products = useLoaderData();
-  const { loading, error, records } = useAppSelector(state => state.products);
+    const params = useParams();
+    const dispatch = useAppDispatch();
+
+    const { loading, error, records } = useAppSelector(state => state.products);
+
+  useEffect(() => {
+    dispatch(actGetProductsByPrefix(params.prefix as string));
+
+    return () => {
+      dispatch(productCleanup());
+    };
+  }, [dispatch, params]);
 
 
-  const productsList =
-  records.length> 0
-  ? records.map((record)=>{
-      return(
-        <Col key={record.id} xs={6} md={3}  className="d-flex justify-content-center mb-5 mt-2">
-          <Product price={record.price} title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} {...records} />
-        </Col>
-      );
-  })
-  : "there are no products";
+
 
 
   return (
     <Container>
-      <Row>
-        {productsList}
-      </Row>
+      <Loading status={loading} error={error}>
+          <GridList records={records} renderItem={(record : Tproducts) =>
+                    <Product title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} price={record.price} {...records} />
+          }/>
+      </Loading>
     </Container>
   );
 };

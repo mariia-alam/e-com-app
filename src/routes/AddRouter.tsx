@@ -9,8 +9,6 @@ import About from '@pages/About';
 import Login from '@pages/Login';
 import Register from '@pages/Register';
 import Error from '../pages/Error';
-import { CategoriesLoader } from './loaders/CategoriesLoader';
-import { ProductsLoader } from './loaders/productsLoader';
 
 const router = createBrowserRouter([{
     path:"/",
@@ -24,7 +22,6 @@ const router = createBrowserRouter([{
         {
             path:"categories",
             element: <Categories/>,
-            loader: CategoriesLoader,
         },
         {
             path:"categories/products/:prefix",
@@ -40,7 +37,7 @@ const router = createBrowserRouter([{
                         status: 400}
                     )
                 }
-                return await ProductsLoader(params.prefix);
+                return true;
             }
         },
         {
@@ -61,6 +58,7 @@ const router = createBrowserRouter([{
 
 export default function AddRouter() {
     return (
+
         <RouterProvider router={router}>
         </RouterProvider>
 )

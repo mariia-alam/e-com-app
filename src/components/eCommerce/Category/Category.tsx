@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 const Category = ({title, img, prefix}: Tcategory) => {
 
     return (
-            <div className={category}>
+        <div
+            className={category}        >
                 <Link to={`/categories/products/${prefix}`}>
                     <div className={categoryImg}>
                         <img
@@ -16,7 +17,7 @@ const Category = ({title, img, prefix}: Tcategory) => {
                     </div>
                     <h4 className={categoryTitle}>{title}</h4>
                 </Link>
-            </div>
+        </div>
     );
 };
 
