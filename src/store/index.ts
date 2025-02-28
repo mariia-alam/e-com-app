@@ -1,11 +1,49 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import categoriesSlice from "./categories/categoriesSlice"
 import productsSlice from "@store/products/productsSlice"
-export const store = configureStore({
-    reducer: {
+import cartSlice from "./Cart/cartSlice"
+import {persistReducer,
+        persistStore,
+        FLUSH,
+        REHYDRATE,
+        PAUSE,
+        PERSIST,
+        PURGE,
+        REGISTER
+                } from "redux-persist"
+import storage from "redux-persist/lib/storage";
+
+// const rootPersistConfig = {
+//     key:"root",
+//     storage: storage,
+//     whiteList:["cart"],
+// };
+const cartPersistConfig = {
+    key:"cart",
+    storage: storage,
+    whiteList:["items"],
+};
+
+const rootReducer = combineReducers(
+    {
         categories:categoriesSlice,
-        products: productsSlice
-    },
+        products: productsSlice,
+        cart: persistReducer(cartPersistConfig,  cartSlice),
+    }
+)
+
+// const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
+
+const store = configureStore({
+    // reducer: persistedReducer,
+    reducer: rootReducer,
+    
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],  // ✅ استثناء الـ actions الخاصة بـ persist
+            },
+        }),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
@@ -13,4 +51,6 @@ export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
 
-export default store;
+const persistor = persistStore(store);
+
+export   {store, persistor};

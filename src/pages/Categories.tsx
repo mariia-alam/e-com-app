@@ -4,13 +4,13 @@ import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { useEffect } from "react";
 import { actGetCategories } from "@store/categories/categoriesSlice";
 import { Loading } from "@components/feedback";
-import { GridList } from "@components/common";
+import { GridList, Heading } from "@components/common";
 import { Tcategory } from "@customtypes/categories";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
   const { loading, error, records } = useAppSelector((state) => state.categories);
-
+  console.log("render")
   useEffect(() => {
     if (!records.length) {
       dispatch(actGetCategories());
@@ -20,6 +20,7 @@ const Categories = () => {
 
   return (
       <Container>
+        <Heading>Categories</Heading>
         <Loading status={loading} error={error}>
           <GridList records={records} renderItem={(record : Tcategory) =>
                     <Category title={record.title} img={record.img} id={record.id} prefix={record.prefix} />

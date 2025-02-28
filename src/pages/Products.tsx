@@ -7,14 +7,19 @@ import { useParams } from "react-router-dom";
 import { Loading } from "@components/feedback";
 import { GridList } from "@components/common";
 import { Tproducts } from "@customtypes/products";
+import {Heading} from "@components/common";
 const Products = () => {
+    const cartItems = useAppSelector((state)=> state.cart.items);
     const params = useParams();
+
     const dispatch = useAppDispatch();
 
     const { loading, error, records } = useAppSelector(state => state.products);
 
-  useEffect(() => {
-    dispatch(actGetProductsByPrefix(params.prefix as string));
+    const productsFullInfo =  records.map(el=> ({...el, quantity:cartItems[el.id] || 0}))
+
+    useEffect(() => {
+      dispatch(actGetProductsByPrefix(params.prefix as string));
 
     return () => {
       dispatch(productCleanup());
@@ -27,9 +32,10 @@ const Products = () => {
 
   return (
     <Container>
+    <Heading><span className="text-capitalize">{params.prefix}</span> Products</Heading>
       <Loading status={loading} error={error}>
-          <GridList records={records} renderItem={(record : Tproducts) =>
-                    <Product title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} price={record.price} {...records} />
+          <GridList records={productsFullInfo} renderItem={(record : Tproducts) =>
+                    <Product quantity={record.quantity}  max={record.max} title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} price={record.price} {...records} />
           }/>
       </Loading>
     </Container>
