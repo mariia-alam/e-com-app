@@ -1,0 +1,47 @@
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d4d4d6;
+}
+
+.product {
+    display: flex;
+}
+
+.productImg img {
+    height: 180px;
+    background-color: var(--gray-color);
+    display: block;
+}
+
+.productInfo {
+    margin-left: 10px;
+    margin-top:20px;
+    padding:10px ;
+    /* justify-content:center; */
+    display: flex;
+    flex-direction: column;
+}
+
+.product h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.cartItemSelection{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+.customButton{
+    color: white !important;
+    background-color: var(--background-color) !important;
+}
+.customBadge {
+	background: var(--primary-color);
+    font-size: 15px !important;
+}
