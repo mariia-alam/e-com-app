@@ -12,6 +12,7 @@ import {persistReducer,
         REGISTER
                 } from "redux-persist"
 import storage from "redux-persist/lib/storage";
+import wishListSlice from "@store/WishList/wishListSlice"
 
 // const rootPersistConfig = {
 //     key:"root",
@@ -23,12 +24,18 @@ const cartPersistConfig = {
     storage: storage,
     whiteList:["items"],
 };
+const wishlistPersistConfig = {
+    key:"wishlist",
+    storage: storage,
+    whiteList:["itemsId"],
+};
 
 const rootReducer = combineReducers(
     {
         categories:categoriesSlice,
         products: productsSlice,
         cart: persistReducer(cartPersistConfig,  cartSlice),
+        wishlist: persistReducer(wishlistPersistConfig,  wishListSlice),
     }
 )
 
@@ -37,7 +44,6 @@ const rootReducer = combineReducers(
 const store = configureStore({
     // reducer: persistedReducer,
     reducer: rootReducer,
-    
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

@@ -4,45 +4,62 @@ import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes/products";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/Cart/cartSlice";
-
+import Like from "@assets/svg/like.svg?react"
+import LikeFill from "@assets/svg/like-fill.svg?react"
+import actLikeToggle from "@store/WishList/act/actLikeToggle";
 
 const { product, productImg, customButton } = styles;
 
-const Product =memo( ({ title, img, price, id, max , quantity }: Tproducts) => {
+const Product =memo( ({ title, img, price, id, max , quantity, isLiked}: Tproducts ) => {
 
     const currentRemainingQuantity = max - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <=0 ? true : false;
 
     const dispatch = useAppDispatch();
-    const [loading, setLoading] = useState(false);
+    const [addLoading, setAddLoading] = useState(false);
+    const [likeLoading, setLikeLoading] = useState(false);
 
     useEffect(() => {
         let timer: ReturnType<typeof setTimeout>;
-        if (loading) {
+        if (addLoading) {
             timer = setTimeout(() => {
                 dispatch(addToCart(id));
-                setLoading(false);
+                setAddLoading(false);
             }, 500);
         }
 
         return () => clearTimeout(timer);
-    }, [loading, dispatch, id]);
+    }, [addLoading, dispatch, id]);
 
     const addToCartHandler = () => {
-        setLoading(true);
+        setAddLoading(true);
     };
-    console.log(typeof price)
+
+    const LikeToggleHandler = ()=>{
+        if(likeLoading){return}
+        setLikeLoading(true);
+        dispatch(actLikeToggle(id)).unwrap()
+        .then(()=> setLikeLoading(false))
+        .catch(()=> setLikeLoading(false))
+    }
 
     return (
         <div className={product}>
+                <div onClick={LikeToggleHandler}  className={styles.wishListBtn}>
+                    {likeLoading ? (<Spinner animation="border" size="sm" />) :
+                    isLiked ?
+                        <LikeFill/> :
+                        <Like/>
+                    }
+                </div>
             <div className={productImg}>
                 <img src={img} alt={title} />
             </div>
             <h2 title={title}>{title}</h2>
             <h3>{price.toFixed(2)} $</h3>
             <h3>{quantityReachedToMax ? <p className="text-danger">maximum limit Reached</p> : <p>You can add {currentRemainingQuantity} items</p>}</h3>
-            <Button onClick={addToCartHandler} variant="" className={customButton} disabled={loading || quantityReachedToMax}>
-                {loading ? <Spinner animation="border" size="sm" /> : "Add to cart"}
+            <Button onClick={addToCartHandler} variant="" className={customButton} disabled={addLoading || quantityReachedToMax}>
+                {addLoading ? <Spinner animation="border" size="sm" /> : "Add to cart"}
             </Button>
         </div>
     );

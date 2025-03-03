@@ -1,8 +1,14 @@
-.basketContainer {
-    position: relative;
+.container {
+    /* position: relative; */
     cursor:pointer;
+    /* align-self:flex-end; */
 }
-.basketQuantity {
+.like{
+    width:30px;
+    height:30px;
+}
+
+.Quantity {
     background-color:var(--primary-color);
     height:22px;
     width:22px;

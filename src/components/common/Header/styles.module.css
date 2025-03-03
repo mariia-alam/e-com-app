@@ -29,3 +29,12 @@
     background:var(--accent-color);
     border-radius:0.5rem;
 }
+.svgContainer{
+    margin-right:20px;
+    width:80px;
+    /* background-color:red; */
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}

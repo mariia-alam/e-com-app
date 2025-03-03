@@ -13,7 +13,7 @@ const  GridList = <T extends HasID>({records, renderItem}: GridListProps<T>) => 
         records.length > 0
         ? records.map((record) => {
                 return(
-                    <Col key={record.id} xs={4} md={3} className="d-flex justify-content-center mb-5 mt-2">
+                    <Col key={record.id} xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
                         {renderItem(record)}
                     </Col>
                 )
