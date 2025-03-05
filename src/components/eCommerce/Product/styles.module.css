@@ -9,24 +9,20 @@
 .productImg {
   height: 170px;
   background-color: var(--gray-color);
-} 
+}
 .productImg img{
   height: 100%;
   width:100%;
   display:block;
-      object-fit: cover;
+  object-fit: cover;
 
 }
 
 .product h2 {
-  font-size: 16px;
-  margin-top: 9px;
+  font-size: 15px;
+  margin-top: 3px;
   margin-bottom: 12px;
   width: 100%;
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
-
 }
 
 .product h3 {
@@ -40,7 +36,6 @@
   position: absolute;
   top:5px;
   right:5px;
-  /* background-color: white; */
   width:25px;
   height:25px;
   border-radius: 20px;

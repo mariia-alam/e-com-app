@@ -2,20 +2,18 @@ import styles from "./styles.module.css";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from "react-router-dom";
-import { Badge, Container } from "react-bootstrap";
-import HeaderBasket from "../../eCommerce/HeaderBasket/HeaderBasket";
-import { HeaderWishList } from "@components/eCommerce";
-const {headerContainer, headerLogo, navBar, customBadge , svgContainer} = styles
+import { Container } from "react-bootstrap";
+import {HeaderRightBar} from "@components/common";
+
+const {headerContainer, headerLogo, navBar , span} = styles
 
 export default function Header() {
+
     return (
         <header>
             <div className={headerContainer}>
-                <h1 className={headerLogo}><span>our</span> <Badge bg="" className={customBadge}>e-com</Badge></h1>
-                <div className={svgContainer}>
-                    <HeaderWishList/>
-                    <HeaderBasket/>
-                </div>
+                <h1 className={headerLogo}><span className={span}>SHOPPING</span></h1>
+                <HeaderRightBar/>
             </div>
             <Navbar
             expand="lg"

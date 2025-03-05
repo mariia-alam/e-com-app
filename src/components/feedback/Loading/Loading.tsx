@@ -1,4 +1,4 @@
-import { Tloading } from "@customtypes/shared"
+import { Tloading } from "@customtypes"
 
 interface LoadingProps {
   status: Tloading;

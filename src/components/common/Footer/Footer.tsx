@@ -3,6 +3,6 @@ const { footerContainer } = styles;
 
 export default function Footer() {
     return (
-        <div className={footerContainer}>2025 our Ecom. All rights reserved</div>
+        <div className={footerContainer}>2025 SHOPPING. All rights reserved</div>
     )
 }

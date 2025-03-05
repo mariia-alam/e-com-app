@@ -1,6 +1,6 @@
 import { Form, Button, Badge } from "react-bootstrap";
 import styles from "./styles.module.css";
-import { Tproducts } from "@customtypes/products";
+import { Tproducts } from "@customtypes";
 import { memo } from "react";
 
 const { cartItem, product, productImg, productInfo, cartItemSelection, customBadge } = styles;

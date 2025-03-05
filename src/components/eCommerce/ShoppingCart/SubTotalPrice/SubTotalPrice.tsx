@@ -1,4 +1,4 @@
-import { Tproducts } from "@customtypes/products"
+import { Tproducts } from "@customtypes"
 import styles from "./styles.module.css"
 
 type SubTotalPriceProps = {products: Tproducts[]};

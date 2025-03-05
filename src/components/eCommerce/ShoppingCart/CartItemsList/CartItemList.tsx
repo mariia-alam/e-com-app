@@ -1,5 +1,5 @@
 import {CartItem} from "@components/eCommerce";
-import { Tproducts } from "@customtypes/products";
+import { Tproducts } from "@customtypes";
 
 type CartItemListProps = {
     products : Tproducts[]

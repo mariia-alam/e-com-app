@@ -1,4 +1,4 @@
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 type GridListProps<T> = {
     records: T[];
@@ -23,9 +23,12 @@ const  GridList = <T extends HasID>({records, renderItem}: GridListProps<T>) => 
 
 
     return (
+        <Container>
         <Row>
             {List}
         </Row>
+        </Container>
+
     )
 }
 

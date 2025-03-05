@@ -1,16 +1,17 @@
 import { useState, useEffect, memo } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import styles from "./styles.module.css";
-import { Tproducts } from "@customtypes/products";
+import { Tproducts } from "@customtypes";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/Cart/cartSlice";
-import Like from "@assets/svg/like.svg?react"
-import LikeFill from "@assets/svg/like-fill.svg?react"
+import Like from "@assets/svg/like-red.svg?react"
+import LikeFill from "@assets/svg/like-fill-red.svg?react"
 import actLikeToggle from "@store/WishList/act/actLikeToggle";
 
 const { product, productImg, customButton } = styles;
 
 const Product =memo( ({ title, img, price, id, max , quantity, isLiked}: Tproducts ) => {
+    // console.log("render product component")
 
     const currentRemainingQuantity = max - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <=0 ? true : false;

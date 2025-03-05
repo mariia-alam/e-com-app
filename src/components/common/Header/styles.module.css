@@ -7,34 +7,24 @@
 }
 
 .headerLogo {
-    color: inherit;
-    text-decoration: inherit;
     font-size: 2.3rem;
-    margin: 0;
 }
 
-.headerLogo h1 {
-    margin: 0;
-    display: flex;
-}
-
-.headerLogo h1 span {
-    display: block;
-    margin-right: 5px;
-}
-.customBadge {
-	background: var(--primary-color);
+.span{
+    background: linear-gradient(135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 20%,
+    var(--accent-color) 40%,
+    var(--background-color) 60%,
+    var(--gray-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 35px;
+    display: inline-block;
 }
 .navBar{
     background:var(--accent-color);
     border-radius:0.5rem;
-}
-.svgContainer{
-    margin-right:20px;
-    width:80px;
-    /* background-color:red; */
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:center;
+
 }

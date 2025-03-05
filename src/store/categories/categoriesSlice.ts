@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetCategories from "./act/actGetCategories";
-import { Tloading } from "@customtypes/shared";
-import { Tcategory } from "@customtypes/categories";
+import { Tloading, Tcategory } from "@customtypes";
 
 interface IcategoriesState {
 records: Tcategory[];
@@ -17,7 +16,11 @@ error: null,
 const categoriesSlice = createSlice({
     name:'categories',
     initialState: initialState,
-    reducers:{},
+    reducers:{
+        cleanupCategories: (state)=>{
+            state.records = [];
+        }
+    },
     extraReducers:(builder)=>{
         builder.addCase(actGetCategories.pending, (state)=>{
             state.loading = "pending";
@@ -38,4 +41,5 @@ const categoriesSlice = createSlice({
 })
 
 export default categoriesSlice.reducer;
+export const {cleanupCategories} = categoriesSlice.actions;
 export {actGetCategories}

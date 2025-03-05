@@ -1,10 +1,11 @@
-import { Tcategory } from "@customtypes/categories";
+import { Tcategory } from "@customtypes";
 import styles from "./styles.module.css";
 const { category, categoryImg, categoryTitle } = styles;
 import { Link } from "react-router-dom";
 
 
 const Category = ({title, img, prefix}: Tcategory) => {
+    // console.log("render category component")
 
     return (
         <div

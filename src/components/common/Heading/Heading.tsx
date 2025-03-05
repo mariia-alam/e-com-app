@@ -1,6 +1,10 @@
+import { memo } from "react"
+import styles from "./styles.module.css"
 
-export default function Heading({ children } : { children : React.ReactNode }) {
+const  Heading = memo(({ title  } : { title : string}) => {
+    // console.log("render heading")
     return (
-        <h2 className="mb-4 p-2 fs-1">{children}</h2>
+        <h2 className={styles.heading}>{title}</h2>
     )
-}
+})
+export default Heading;

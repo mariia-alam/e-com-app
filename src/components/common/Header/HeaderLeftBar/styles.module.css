@@ -1,0 +1,12 @@
+.svgContainer{
+    margin-right:30px;
+    width:90px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo{
+    width:30px;
+    height:30px;
+}
