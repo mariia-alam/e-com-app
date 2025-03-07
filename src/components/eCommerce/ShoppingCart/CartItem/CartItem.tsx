@@ -18,7 +18,7 @@ const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, ch
         )
     }); //[0,0,0,0]
     const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement> )=>{
-        const quantity = +event.target.value
+const quantity = +event.currentTarget.value;
         changeQuantityHandler(id, quantity)
     }
     const remove = ()=>{
