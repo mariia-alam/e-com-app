@@ -50,11 +50,11 @@ const cartSlice = createSlice({
             state.productsFullInfo = action.payload;
         })
         builder.addCase(actGetProductsByItems.rejected, (state, action)=>{
+                console.log("Request failed!", action.payload); // 🔍 تحقق مما إذا كان `action.payload` يحتوي على الخطأ الصحيح
             state.loading ="failed";
             if(action.payload && typeof action.payload === "string"){
                 state.error = action.payload;
             }
-            state.error = ""
         })
     }
     }

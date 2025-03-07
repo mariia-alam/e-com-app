@@ -1,18 +1,32 @@
 import { Tloading } from "@customtypes"
-
+import CategorySkeleton from "../skeletons/CategorySkeleton/CategorySkeleton";
+import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
+import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
+import {LottieHandler} from "@components/feedback"
 interface LoadingProps {
   status: Tloading;
   error: null | string;
   children: React.ReactNode; // array | jsx | anything
+  // type?: "cart" | "product" | "category";
+  type?: keyof typeof skeletonsType;
   // children: React.JSX.Element; // send components only
 }
+const skeletonsType = {
+  category: CategorySkeleton,
+  product: ProductSkeleton,
+  cart: CartSkeleton
+}
 
-export default function Loading( { status , error, children }: LoadingProps ) {
+export default function Loading( { status , error, children, type="category" }: LoadingProps ) {
+  const  Component = skeletonsType[type];
+
   if(status === 'pending'){
-    return <p>Loading..</p>
-  }
-  if(status === 'failed'){
-    return <p>{error}</p>
+      return <Component/>
+    }
+  if(status === 'failed' || error ){
+    return(
+      <LottieHandler type="error" message={error as string} ></LottieHandler>
+    )
   }
   return <>{children}</>;
 

@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { Suspense } from 'react';
 //layouts
-import {MainLayout} from '@layouts/index'
+const MainLayout = lazy(() => import("@layouts/MainLayout/MainLayout"));
 
 //pages
+import Error from '@pages/Error';
 const Home = lazy(()=> import("@pages/Home"))
 const Categories = lazy(()=> import("@pages/Categories"))
 const Products = lazy(()=> import("@pages/Products"))
@@ -12,26 +13,35 @@ const Cart = lazy(()=> import("@pages/Cart"))
 const About = lazy(()=> import("@pages/About"))
 const Login = lazy(()=> import("@pages/Login"))
 const Register = lazy(()=> import("@pages/Register"))
-const Error = lazy(()=> import("@pages/Error"))
 const WishList = lazy(()=> import("@pages/WishList"))
+//suspense
+import {PageSuspense} from '@components/feedback';
 
-
+import {LottieHandler} from '@components/feedback';
 const router = createBrowserRouter([{
     path:"/",
-    element: <MainLayout/>,
-    errorElement: <Error/>,
+    element:
+    <Suspense
+        fallback={
+            <div style={{marginTop:"15%"}} className='d-flex flex-column align-items-center'>
+            <LottieHandler type='loading' message='Loading..'></LottieHandler>
+            </div>}
+    >
+        <MainLayout/>
+    </Suspense>,
+errorElement: <Error/>,
     children:[
         {
             index:true,
-            element: <Suspense fallback="Loading please wait"><Home/></Suspense>
+            element: <PageSuspense><Home/></PageSuspense>
         },
         {
             path:"categories",
-            element: <Suspense fallback="Loading please wait"><Categories/></Suspense>,
+            element: <PageSuspense><Categories/></PageSuspense>,
         },
         {
             path:"categories/products/:prefix",
-            element: <Suspense fallback="Loading please wait"><Products/></Suspense>,
+            element: <PageSuspense><Products/></PageSuspense>,
             loader: async({params})=>{
                 if(
                     typeof(params.prefix) !== "string" ||
@@ -47,30 +57,29 @@ const router = createBrowserRouter([{
         },
         {
             path:"about",
-            element:<Suspense fallback="Loading please wait"><About/></Suspense>
+            element:<PageSuspense><About/></PageSuspense>
         },
         {
             path:"login",
-            element:<Suspense fallback="Loading please wait"><Login/></Suspense>
+            element:<PageSuspense><Login/></PageSuspense>
         },
         {
             path:"register",
-            element:<Suspense fallback="Loading please wait"><Register/></Suspense>
+            element:<PageSuspense><Register/></PageSuspense>
         },
         {
             path:"cart",
-            element:<Suspense fallback="Loading please wait"><Cart/></Suspense>
+            element:<PageSuspense><Cart/></PageSuspense>
         },
         {
             path:"wishlist",
-            element:<Suspense fallback="Loading please wait"><WishList/></Suspense>
+            element:<PageSuspense><WishList/></PageSuspense>
         }
     ]
 }])
 
 export default function AddRouter() {
     return (
-
         <RouterProvider router={router}>
         </RouterProvider>
 )}

@@ -361,11 +361,5 @@
       "img": "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564"
     }
   ],
-  "wishlist": [
-    {
-      "userId": 1,
-      "productId": 22,
-      "id": 1
-    }
-  ]
+  "wishlist": []
 }

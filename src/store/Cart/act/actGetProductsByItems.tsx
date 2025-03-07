@@ -11,10 +11,10 @@ const actGetProductsByItems = createAsyncThunk("cart/actGetProductsByItems",
         const { cart } = getState() as RootState;
         const itemsId = Object.keys(cart.items);
 
-        if(!itemsId.length){
-            return fulfillWithValue([]);
-        }
         try{
+            if(!itemsId.length){
+            return fulfillWithValue([]);
+            }
             const Ids = itemsId.map(el => `id=${el}`).join("&");
             const response = await axios.get<TResponse>(`/products?${Ids}`,{signal});
             return  response.data
