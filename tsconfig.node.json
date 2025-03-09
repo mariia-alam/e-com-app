@@ -21,6 +21,7 @@
       "@util": ["src/util/index"],
       "@services/*": ["src/services/*"],
       "@customtypes": ["src/types/index"],
+      "@validation/*": ["src/validation/*"],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

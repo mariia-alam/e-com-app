@@ -24,13 +24,13 @@ cd e-com-app
 
 ### 3. Frontend Setup
 
-- Install dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-- Start the development server:
+2. Start the development server:
 
 ```bash
 npm run dev
@@ -38,19 +38,19 @@ npm run dev
 
 ### 4. Backend Setup
 
-- Navigate to the backend directory:
+1. Navigate to the backend directory:
 
 ```bash
 cd Back app
 ```
 
-- Install dependencies:
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-- Start the backend server:
+3. Start the backend server:
 
 ```bash
 npm start
@@ -58,3 +58,13 @@ npm start
 
 ------
 
+### 5. Alternative: Run Backend Locally and Use Deployed Frontend
+
+Instead of setting up the frontend locally, you can:
+
+1. Start the backend server as explained in the **Backend Setup** section.
+2. Access the deployed frontend directly via:
+
+```bash
+https://e-com-app-omega.vercel.app/
+```

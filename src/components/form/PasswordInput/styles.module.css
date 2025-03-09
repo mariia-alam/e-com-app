@@ -1,0 +1,22 @@
+.passwordField {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 10px;
+    top:5.5px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.hasError .togglePassword {
+    right: 35px;
+}
+
+.togglePassword:hover {
+    color: black;
+}
