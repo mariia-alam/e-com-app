@@ -7,4 +7,5 @@ export type Tproducts= {
     quantity?:number;
     max:number;
     isLiked: boolean;
+    isAuthenticated?:boolean;
 };

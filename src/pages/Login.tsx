@@ -1,43 +1,63 @@
-import { useForm, SubmitHandler } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod";
-import {Button, Form, Row , Col} from 'react-bootstrap';
+import { Navigate } from "react-router-dom";
+import {Button, Form, Row , Col, Alert, Spinner} from 'react-bootstrap';
 import { Heading } from '@components/common';
-import { signInSchema, signInType } from "@validation/SignInSchema";
 import { Input, PasswordInput } from "@components/form";
+import useLogin from "@hooks/useLogin";
 
 export default function Login() {
-  const { register, handleSubmit ,formState:{errors} } = useForm<signInType>(
-    {
-      mode: "onBlur",
-      resolver: zodResolver(signInSchema)}
-  );
+  const {
+          error,
+          loading,
+          accessToken,
+          register,
+          handleSubmit,
+          formErrors,
+          submitForm,
+          searchParams,
+        } = useLogin();
 
-  const submitForm : SubmitHandler<signInType> = (data) => {
-    console.log(data)
-  }
 
+if(accessToken){
+  return <Navigate to="/" />
+}
   return (
       <>
       <Heading title='User Login'/>
       <Row>
         <Col md={{span:6, offset:3}}>
+        {searchParams.get("message") === "account_created" &&
+            <Alert variant="success">Account created successfully, login please</Alert>}
+        {searchParams.get("message") === "login_required" &&
+            <Alert variant="primary">If you want to continue, please log in</Alert>}
+            {error && <Alert variant="danger">{error}</Alert>}
+
           <Form onSubmit={handleSubmit(submitForm)}>
-              <Input label="Email Address" name="email" type="email" error={errors.email?.message as string} register={register}></Input>
+              <Input label="Email Address" name="email" type="email" error={formErrors.email?.message as string} register={register}></Input>
               <PasswordInput
                 label="Password"
                 name="password"
                 register={register}
-                error={errors.password?.message as string}
+                error={formErrors.password?.message as string}
               />
               <Form.Group className="d-flex justify-content-end">
-                <Button
-                  variant=""
-                  type="submit"
-                  style={{ backgroundColor: "var(--primary-color)", color: "white" }}
-                >
-                  Submit
-                </Button>
+              {
+                loading!=="pending" ?
+                  <Button
+                    variant=""
+                    type="submit"
+                    style={{ backgroundColor: "var(--primary-color)", color: "white" }}
+                  >
+                    Login
+                  </Button> :
+                  <Button
+                      variant=""
+                      style={{ backgroundColor: "var(--primary-color)", color: "white" }}
+                    >
+                      <Spinner animation="border" size="sm"/> Logging in..
+                  </Button>
+              }
               </Form.Group>
+
           </Form>
         </Col>
       </Row>

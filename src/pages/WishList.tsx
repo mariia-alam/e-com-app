@@ -14,7 +14,7 @@ export default function WishList() {
             <Loading type="product" status={loading} error={error}>
                 {products.length > 0?
                         <GridList records={products} renderItem={(record : Tproducts) =>
-                                <Product isLiked={record.isLiked} quantity={record.quantity}  max={record.max} title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} price={record.price} {...productsFullInfo} />
+                                <Product isAuthenticated={record.isAuthenticated} isLiked={record.isLiked} quantity={record.quantity}  max={record.max} title={record.title} img={record.img} id={record.id} cat_prefix={record.cat_prefix} price={record.price} {...productsFullInfo} />
                         }/>
                         :
                         <LottieHandler type="emptyWishList" message="Your wishlist is empty"></LottieHandler>

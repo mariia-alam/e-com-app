@@ -1,12 +1,9 @@
 :root {
-  --primary-color: #42b883;
-  --secondary-color: #347474;
-  --accent-color: #35495e;
-  --background-color: #ff7e67;
-  --gray-color:lightgray;
-}
-.active{
-    /* text-decoration:underline; */
+    --primary-color: #42b883;
+    --secondary-color: #347474;
+    --accent-color: #35495e;
+    --background-color: #ff7e67;
+    --gray-color:lightgray;
 }
 .notFound{
     padding-top:15%;
@@ -17,4 +14,19 @@
 }
 .notFound p {
     font-size:50px;
+}
+
+.navbar{
+    background:var(--accent-color);
+    border-radius:0.5rem;
+}
+.navbar-nav .dropdown-menu {
+    background-color: var(--secondary-color) !important;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: var(--accent-color);
+    color: white;
 }

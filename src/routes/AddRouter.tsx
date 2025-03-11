@@ -14,10 +14,17 @@ const About = lazy(()=> import("@pages/About"))
 const Login = lazy(()=> import("@pages/Login"))
 const Register = lazy(()=> import("@pages/Register"))
 const WishList = lazy(()=> import("@pages/WishList"))
+const Profile = lazy(()=> import("@pages/Profile"))
+
 //suspense
 import {PageSuspense} from '@components/feedback';
 
 import {LottieHandler} from '@components/feedback';
+
+//protected routes
+import ProtectedRoutes from '@components/auth/ProtectedRoutes';
+
+
 const router = createBrowserRouter([{
     path:"/",
     element:
@@ -29,7 +36,7 @@ const router = createBrowserRouter([{
     >
         <MainLayout/>
     </Suspense>,
-errorElement: <Error/>,
+    errorElement: <Error/>,
     children:[
         {
             index:true,
@@ -73,7 +80,11 @@ errorElement: <Error/>,
         },
         {
             path:"wishlist",
-            element:<PageSuspense><WishList/></PageSuspense>
+            element:<ProtectedRoutes><PageSuspense><WishList/></PageSuspense></ProtectedRoutes>
+        },
+        {
+            path:"profile",
+            element:<ProtectedRoutes><PageSuspense><Profile/></PageSuspense></ProtectedRoutes>
         }
     ]
 }])

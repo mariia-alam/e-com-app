@@ -1,5 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Modal } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes";
 import { useAppDispatch } from "@store/hooks";
@@ -10,7 +10,10 @@ import actLikeToggle from "@store/WishList/act/actLikeToggle";
 
 const { product, productImg, customButton } = styles;
 
-const Product =memo( ({ title, img, price, id, max , quantity, isLiked}: Tproducts ) => {
+const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthenticated}: Tproducts ) => {
+
+    const [showModal, setShowModal] = useState(false);
+
     // console.log("render product component")
 
     const currentRemainingQuantity = max - (quantity ?? 0);
@@ -37,14 +40,33 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked}: Tproduc
     };
 
     const LikeToggleHandler = ()=>{
+        if(isAuthenticated){
         if(likeLoading){return}
         setLikeLoading(true);
         dispatch(actLikeToggle(id)).unwrap()
         .then(()=> setLikeLoading(false))
         .catch(()=> setLikeLoading(false))
+        }else{
+            setShowModal(true);
+        }
     }
 
-    return (
+return (
+    <>
+        <Modal  centered show={showModal} onHide={ () => setShowModal(false) }>
+            <Modal.Header closeButton>
+            <Modal.Title>Login Required</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+            <p>If you want to continue, please log in</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+            <Button variant="" style={{backgroundColor:"var(--primary-color)", color:"white"}} onClick={()=> setShowModal(false)}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+
         <div className={product}>
                 <div onClick={LikeToggleHandler}  className={styles.wishListBtn}>
                     {likeLoading ? (<Spinner animation="border" size="sm" />) :
@@ -63,6 +85,7 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked}: Tproduc
                 {addLoading ? <Spinner animation="border" size="sm" /> : "Add to cart"}
             </Button>
         </div>
+    </>
     );
 })
 

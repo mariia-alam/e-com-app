@@ -12,11 +12,14 @@ export default function useProducts() {
     const cartItems = useAppSelector((state)=> state.cart.items);
     const { loading, error, records } = useAppSelector(state => state.products);
     const  wishListItemsId  = useAppSelector(state => state.wishlist.itemsId);
+    
+    const userAccessToken = useAppSelector(state => state.auth.accessToken)
 
     const productsFullInfo =  records.map(el=> ({
         ...el,
         quantity:cartItems[el.id] || 0,
         isLiked: wishListItemsId.includes(el.id),
+        isAuthenticated:userAccessToken ? true : false,
         }))
 
     useEffect(() => {

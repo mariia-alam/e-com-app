@@ -23,8 +23,3 @@
     font-size: 35px;
     display: inline-block;
 }
-.navBar{
-    background:var(--accent-color);
-    border-radius:0.5rem;
-
-}

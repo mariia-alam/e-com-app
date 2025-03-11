@@ -1,7 +1,25 @@
 {
   "users": [
     {
-      "email": "mariaalam498@gmail.com"
+      "email": "mariaalam@example.com",
+      "password": "$2a$10$cdc98VVbjnv/Idd5Zfk/ou/YClpW41apgT7q6m11zEbj7wC1pGvSG",
+      "firstName": "Maria",
+      "lastName": "Alam",
+      "id": 1
+    },
+    {
+      "email": "maria@example.com",
+      "password": "$2a$10$N6Fz5rcqVL/E42vM1PIGXO7vjhY.WDg01hHQ8cagrm0wPEBU9BWrO",
+      "firstName": "Emily",
+      "lastName": "Alam",
+      "id": 2
+    },
+    {
+      "email": "sarah@gmail.com",
+      "password": "$2a$10$hp9JZjUnFMWsV0a/FzQzJeyEylelTzV1ijipRQs1k.Wb0VQgP8zwq",
+      "firstName": "sarah",
+      "lastName": "alam",
+      "id": 3
     }
   ],
   "categories": [
@@ -366,5 +384,41 @@
       "img": "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564"
     }
   ],
-  "wishlist": []
+  "wishlist": [
+    {
+      "userId": 2,
+      "productId": 1,
+      "id": 11
+    },
+    {
+      "userId": 2,
+      "productId": 5,
+      "id": 12
+    },
+    {
+      "userId": 2,
+      "productId": 3,
+      "id": 13
+    },
+    {
+      "userId": 3,
+      "productId": 5,
+      "id": 15
+    },
+    {
+      "userId": 3,
+      "productId": 4,
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "productId": 2,
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "productId": 1,
+      "id": 20
+    }
+  ]
 }
