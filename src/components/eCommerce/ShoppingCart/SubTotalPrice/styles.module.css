@@ -8,3 +8,7 @@
     font-size: 17px;
     font-weight:bold;
 }
+.customButton {
+    background-color:var(--primary-color) !important;
+    color:white;
+}

@@ -5,6 +5,7 @@ import notFound from "@assets/lottieFile/notFound.json"
 import loading from "@assets/lottieFile/loading.json"
 import emptyWishList from "@assets/lottieFile/emptyWishList.json"
 import emptyList from "@assets/lottieFile/emptyList.json"
+import success from "@assets/lottieFile/success.json"
 
 const lottieFilesMap = {
     notFound: notFound,
@@ -12,7 +13,8 @@ const lottieFilesMap = {
     emptyWishList: emptyWishList,
     emptyList: emptyList,
     loading: loading,
-    error:error
+    error:error,
+    success:success,
 }
 type LottieHandleProps ={
     type: keyof typeof lottieFilesMap;

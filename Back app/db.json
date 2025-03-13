@@ -396,11 +396,6 @@
       "id": 12
     },
     {
-      "userId": 2,
-      "productId": 3,
-      "id": 13
-    },
-    {
       "userId": 3,
       "productId": 5,
       "id": 15
@@ -409,16 +404,40 @@
       "userId": 3,
       "productId": 4,
       "id": 16
+    }
+  ],
+  "orders": [
+    {
+      "userId": 3,
+      "items": [
+        {
+          "id": 1,
+          "title": "Regular Fit Jersey top",
+          "price": 9.99,
+          "cat_prefix": "men",
+          "max": 4,
+          "img": "https://image.hm.com/assets/hm/54/bc/54bc0275dcbbea83d05bc15f290ab4a59f9e78c5.jpg?imwidth=1260",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 9.99,
+      "id": 1
     },
     {
-      "userId": 1,
-      "productId": 2,
-      "id": 17
-    },
-    {
-      "userId": 1,
-      "productId": 1,
-      "id": 20
+      "userId": 3,
+      "items": [
+        {
+          "id": 22,
+          "title": "Printed Jersey Top",
+          "price": 4,
+          "cat_prefix": "kids",
+          "max": 4,
+          "img": "https://image.hm.com/assets/hm/ce/42/ce42249a8d7cd4e633bb0e30be707dbac0b79009.jpg?imwidth=564",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 4,
+      "id": 2
     }
   ]
 }
