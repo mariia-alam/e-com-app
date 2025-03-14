@@ -16,7 +16,7 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthen
 
     // console.log("render product component")
 
-    const currentRemainingQuantity = max - (quantity ?? 0);
+    const currentRemainingQuantity = max ?? 0 - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <=0 ? true : false;
 
     const dispatch = useAppDispatch();
