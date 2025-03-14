@@ -1,0 +1,35 @@
+.orderItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #d4d4d6;
+    max-width:450px;
+    min-width:300px;
+    height:140px;
+}
+
+.product {
+    display: flex;
+}
+
+.productImg img {
+    height: 120px;
+    background-color: var(--gray-color);
+    display: block;
+}
+
+.productInfo {
+    margin-left: 10px;
+    padding:10px ;
+    display: flex;
+    flex-direction: column;
+}
+
+.product h2 {
+    font-size: 16px;
+    width: 100%;
+}
+
+.customBadge {
+	background: var(--primary-color);
+    font-size: 14px !important;
+}

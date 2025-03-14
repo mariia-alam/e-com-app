@@ -3,6 +3,7 @@ import CategorySkeleton from "../skeletons/CategorySkeleton/CategorySkeleton";
 import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
 import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
 import {LottieHandler} from "@components/feedback"
+import OrderSkeleton from "../skeletons/OrderSkeleton/OrderSkeleton";
 interface LoadingProps {
   status: Tloading;
   error: null | string;
@@ -14,7 +15,8 @@ interface LoadingProps {
 const skeletonsType = {
   category: CategorySkeleton,
   product: ProductSkeleton,
-  cart: CartSkeleton
+  cart: CartSkeleton,
+  order:OrderSkeleton
 }
 
 export default function Loading( { status , error, children, type="category" }: LoadingProps ) {

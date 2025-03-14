@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
 //layouts
 const MainLayout = lazy(() => import("@layouts/MainLayout/MainLayout"));
+//profile layout
+import { ProfileLayout } from '@layouts/index';
 
 //pages
 import Error from '@pages/Error';
@@ -14,7 +16,8 @@ const About = lazy(()=> import("@pages/About"))
 const Login = lazy(()=> import("@pages/Login"))
 const Register = lazy(()=> import("@pages/Register"))
 const WishList = lazy(()=> import("@pages/WishList"))
-const Profile = lazy(()=> import("@pages/Profile"))
+const Account = lazy(()=> import("@pages/Account"))
+const Orders = lazy(()=> import("@pages/Orders"))
 
 //suspense
 import {PageSuspense} from '@components/feedback';
@@ -84,7 +87,11 @@ const router = createBrowserRouter([{
         },
         {
             path:"profile",
-            element:<ProtectedRoutes><PageSuspense><Profile/></PageSuspense></ProtectedRoutes>
+            element:<ProtectedRoutes><PageSuspense><ProfileLayout/></PageSuspense></ProtectedRoutes>,
+            children: [
+                {index:true, element:<PageSuspense><Account/></PageSuspense>},
+                {path:"orders", element:<PageSuspense><Orders/></PageSuspense>}
+            ]
         }
     ]
 }])

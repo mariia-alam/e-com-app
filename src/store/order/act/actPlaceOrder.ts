@@ -18,7 +18,7 @@ const actPlaceOrder = createAsyncThunk("odrer/actPlaceOrder",
             const response = await axios.post("/orders",{
                 userId: auth.user?.id,
                 items:orderItems,
-                subtotal:subtotal,
+                subTotal:subtotal,
             });
             return response.data;
         }catch(error){

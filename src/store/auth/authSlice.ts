@@ -9,7 +9,7 @@ interface IAuthState {
         id:number;
         firstName:string;
         lastName:string;
-        eamil:string;
+        email?:string;
     } | null;
     loading: Tloading;
     error: string | null;

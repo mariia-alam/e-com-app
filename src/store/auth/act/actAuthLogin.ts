@@ -14,7 +14,7 @@ type TResponse = {
         id:number;
         firstName:string;
         lastName:string;
-        eamil:string;
+        email:string;
     };
 }
 const actAuthLogin = createAsyncThunk("auth/actAuthLogin",

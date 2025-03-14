@@ -5,7 +5,7 @@ export type Tproducts= {
     img: string,
     price:number,
     quantity?:number;
-    max:number;
-    isLiked: boolean;
+    max?:number;
+    isLiked?: boolean;
     isAuthenticated?:boolean;
 };
