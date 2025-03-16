@@ -2,7 +2,6 @@ import { Form, Button, Badge } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes";
 import { memo } from "react";
-
 const { cartItem, product, productImg, productInfo, cartItemSelection, customBadge } = styles;
 
 type CartItemProps = Tproducts & {
@@ -11,15 +10,16 @@ type CartItemProps = Tproducts & {
 }
 const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, changeQuantityHandler, removeItem}: CartItemProps) => {
 
+
     const renderOption  = Array(max).fill(0).map((_,idx)=>{
         const quantity = ++idx
         return (
             <option value={quantity} key={idx}>{quantity}</option>
         )
     }); //[0,0,0,0]
-    const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement> )=>{
-const quantity = +event.currentTarget.value;
-        changeQuantityHandler(id, quantity)
+    const changeQuantity = async (event: React.ChangeEvent<HTMLSelectElement> )=>{
+    const quantity = +event.currentTarget.value;
+        changeQuantityHandler(id, quantity);
     }
     const remove = ()=>{
         removeItem(id);

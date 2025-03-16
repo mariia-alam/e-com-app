@@ -20,6 +20,14 @@ const actPlaceOrder = createAsyncThunk("odrer/actPlaceOrder",
                 items:orderItems,
                 subTotal:subtotal,
             });
+            //delete the cart
+            try {
+                const userCart = await axios.get(`/cart?userId=${auth.user?.id}`);
+                const cartId = userCart.data[0].id;
+                await axios.delete(`/cart/${cartId}`);
+            } catch (deleteError) {
+            return rejectWithValue(AxiosErrorHandler(deleteError));
+            }
             return response.data;
         }catch(error){
         return rejectWithValue(AxiosErrorHandler(error))

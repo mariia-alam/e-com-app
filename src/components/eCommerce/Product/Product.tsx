@@ -3,11 +3,11 @@ import { Button, Spinner, Modal } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes";
 import { useAppDispatch } from "@store/hooks";
-import { addToCart } from "@store/Cart/cartSlice";
+// import { addToCart } from "@store/Cart/cartSlice";
 import Like from "@assets/svg/like-red.svg?react"
 import LikeFill from "@assets/svg/like-fill-red.svg?react"
 import actLikeToggle from "@store/WishList/act/actLikeToggle";
-
+import actUpdateCart from "@store/Cart/act/actUpdateCart";
 const { product, productImg, customButton } = styles;
 
 const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthenticated}: Tproducts ) => {
@@ -16,7 +16,7 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthen
 
     // console.log("render product component")
 
-    const currentRemainingQuantity = max ?? 0 - (quantity ?? 0);
+    const currentRemainingQuantity =( max ?? 0) - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <=0 ? true : false;
 
     const dispatch = useAppDispatch();
@@ -27,7 +27,8 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthen
         let timer: ReturnType<typeof setTimeout>;
         if (addLoading) {
             timer = setTimeout(() => {
-                dispatch(addToCart(id));
+
+                dispatch(actUpdateCart({ productId:id , quantity:1 , actionType:"addItem"}))
                 setAddLoading(false);
             }, 500);
         }
@@ -36,7 +37,12 @@ const Product =memo( ({ title, img, price, id, max , quantity, isLiked, isAuthen
     }, [addLoading, dispatch, id]);
 
     const addToCartHandler = () => {
-        setAddLoading(true);
+        if (!isAuthenticated) {
+            setShowModal(true);
+        } else {
+            setAddLoading(true);
+        }
+
     };
 
     const LikeToggleHandler = ()=>{

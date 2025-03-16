@@ -5,7 +5,6 @@ import { signInSchema, signInType } from "@validation/SignInSchema";
 import { actAuthLogin, resetUi } from "@store/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
-import { actGetWishList } from "@store/WishList/wishListSlice";
 
 const useLogin = () => {
     const [searchParams , setSearchParams] = useSearchParams();
@@ -14,7 +13,7 @@ const useLogin = () => {
 
     const dispatch = useAppDispatch();
 
-    const {error , loading, accessToken, user} = useAppSelector(state => state.auth)
+    const {error , loading, accessToken} = useAppSelector(state => state.auth)
 
 
 
@@ -29,8 +28,6 @@ const useLogin = () => {
         setSearchParams(" ")
         }
         dispatch(actAuthLogin(data)).unwrap().then(()=>{
-        console.log(user?.id)
-        dispatch(actGetWishList("productsIds"));
                 navigate("/");
 
     })

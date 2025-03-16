@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from "@store/hooks";
 import {logout} from "@store/auth/authSlice"
 import { useEffect } from "react";
 import { actGetWishList } from "@store/WishList/wishListSlice";
+import { actGetCart } from "@store/Cart/cartSlice";
 
 const {headerContainer, headerLogo , span } = styles
 
@@ -20,6 +21,7 @@ export default function Header() {
     useEffect(()=>{
         if(accessToken){
         dispatch(actGetWishList("productsIds"));
+        dispatch(actGetCart());;
         }
     },[dispatch, accessToken]);
 
