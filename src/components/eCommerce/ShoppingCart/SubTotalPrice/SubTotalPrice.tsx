@@ -1,14 +1,15 @@
 import { Tproducts } from "@customtypes"
 import styles from "./styles.module.css"
 import { Button, Modal, Spinner } from "react-bootstrap";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import {actPlaceOrder} from "@store/order/orderSlice";
 import { clearCartAfterPlaceOrder } from "@store/Cart/cartSlice";
 
 type SubTotalPriceProps = {products: Tproducts[], userAccessToken: string | null};
 
-export default function SubTotalPrice({ products, userAccessToken } : SubTotalPriceProps) {
+const SubTotalPrice = memo(({ products, userAccessToken } : SubTotalPriceProps) => {
+
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useAppDispatch();
@@ -76,4 +77,5 @@ return (
         }
     </>
     )
-}
+})
+export default SubTotalPrice

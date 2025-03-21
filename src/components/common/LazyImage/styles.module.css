@@ -1,0 +1,18 @@
+.productImg {
+  height: 190px;
+  background-color: var(--gray-color);
+  overflow: hidden;
+  position: relative;
+}
+
+.productImg img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.productImg:hover img {
+  transform: scale(1.1);
+}

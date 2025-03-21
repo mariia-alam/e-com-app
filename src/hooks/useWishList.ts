@@ -4,10 +4,11 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { productCleanup } from "@store/WishList/wishListSlice";
 
 export default function useWishList() {
-        const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     const {error, loading ,productsFullInfo } = useAppSelector(state=> state.wishlist)
     const cartItems = useAppSelector((state)=> state.cart.items);
+
     const products =  productsFullInfo.map(el=> ({
         ...el,
         quantity:cartItems[el.id] || 0,
@@ -24,5 +25,5 @@ export default function useWishList() {
         }
     },[dispatch]);
 
-  return {loading, error ,products , productsFullInfo }
+return {loading, error ,products , productsFullInfo }
 }

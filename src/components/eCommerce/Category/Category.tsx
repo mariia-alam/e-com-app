@@ -1,24 +1,41 @@
 import { Tcategory } from "@customtypes";
 import styles from "./styles.module.css";
-const { category, categoryImg, categoryTitle } = styles;
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
+const { category, categoryImg, categoryTitle } = styles;
 
 const Category = ({title, img, prefix}: Tcategory) => {
-    // console.log("render category component")
+
+    const categoryVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.8 },
+    visible: { opacity: 1, y: 0, scale:1, transition: { duration: 0.4 } },
+};
 
     return (
-        <div
-            className={category}        >
+        <motion.div
+            variants={categoryVariants}
+            whileHover={{
+                scale: 1.07,
+                transition: { duration: 0.5, ease: "easeInOut" }
+            }}
+            whileTap={{ scale: [1 , 0.8 , 1], transition: { duration: 0.2 }  }}
+            className={category}
+        >
                 <Link to={`/categories/products/${prefix}`}>
-                    <div className={categoryImg}>
-                        <img
-                            src={img}  alt=""
-                        />
-                    </div>
+                    <motion.div
+                        className={categoryImg}
+                        whileHover={{
+                            y: -5,
+                            boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
+                            transition: { duration: 0.3, ease: "easeInOut" }
+                        }}
+                    >
+                        <img src={img} alt={title} />
+                    </motion.div>
                     <h4 className={categoryTitle}>{title}</h4>
                 </Link>
-        </div>
+        </motion.div>
     );
 };
 

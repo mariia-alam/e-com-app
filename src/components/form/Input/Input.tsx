@@ -26,7 +26,7 @@ const  Input =<TFieldValue extends FieldValues>({label , name, type="text",  reg
     return (
         <Form.Group className="mb-3">
             <Form.Label>{label}</Form.Label>
-            <Form.Control onBlur={onBlurHandler} type={type} {...rest} isInvalid={error? true : false} isValid={success? true : false}/>
+            <Form.Control autoComplete="off" onBlur={onBlurHandler} type={type} {...rest} isInvalid={error? true : false} isValid={success? true : false}/>
             <Form.Control.Feedback type="invalid">
                 {error}
             </Form.Control.Feedback>

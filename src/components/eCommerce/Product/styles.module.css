@@ -1,5 +1,6 @@
 .product {
   width: 150px;
+  height:350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,15 +8,14 @@
 }
 
 .productImg {
-  height: 170px;
+  height: 190px;
   background-color: var(--gray-color);
 }
-.productImg img{
+.productImg img {
   height: 100%;
   width:100%;
   display:block;
   object-fit: cover;
-
 }
 
 .product h2 {

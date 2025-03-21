@@ -1,5 +1,7 @@
 import {CartItem} from "@components/eCommerce";
 import { Tproducts } from "@customtypes";
+import {motion , AnimatePresence} from "framer-motion";
+// import { Col, Row } from "react-bootstrap";
 
 type CartItemListProps = {
     products : Tproducts[]
@@ -7,13 +9,36 @@ type CartItemListProps = {
     removeItem: (id:number) => void
 };
 
-export default function CartItemList({products, changeQuantityHandler, removeItem}: CartItemListProps) {
-    const renderList = products.map((el)=>{
-        return(
-            <CartItem  removeItem={removeItem} changeQuantityHandler={changeQuantityHandler} key={el.id} {...el}></CartItem>
-        )
-    })
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.3 },
+    },
+};
+
+const  CartItemList = ({products, changeQuantityHandler, removeItem}: CartItemListProps) => {
+
+
     return (
-        <div>{renderList}</div>
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                layout
+                variants={containerVariants}
+            >
+                <AnimatePresence mode="sync">
+                    {products.map((el) => (
+                            <CartItem
+                                removeItem={removeItem}
+                                changeQuantityHandler={changeQuantityHandler}
+                                key={el.id}
+                                {...el}
+                            />
+                    ))}
+                </AnimatePresence>
+            </motion.div>
     )
 }
+
+export default CartItemList

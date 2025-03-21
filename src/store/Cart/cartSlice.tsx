@@ -51,16 +51,24 @@ const cartSlice = createSlice({
 
         //update Cart ( add remove -- ++ )
         builder.addCase(actUpdateCart.pending, (state)=>{
-            state.loading="pending";
             state.error = null;
         })
         builder.addCase(actUpdateCart.fulfilled, (state, action)=>{
-            state.loading="succeeded";
-            state.items = action.payload?.items;
-            state.productsFullInfo = state.productsFullInfo.filter((el) => state.items[el.id] !== undefined);
+            if (action.payload?.type === "addItem") {
+                    state.items[action.payload.product.productId] = action.payload.product.quantity;
+                } else if (action.payload?.type === "updateQuantity") {
+                    state.items[action.payload.product.productId] = action.payload.product.quantity;
+                } else if (action.payload?.type === "removeItem") {
+                    delete state.items[action.payload.product.productId];
+                    state.productsFullInfo = state.productsFullInfo.filter(
+                        (el) => el.id !== action.payload?.product.productId
+                    );
+                } else if (action.payload?.type === "deleteCart") {
+                    state.items = {};
+                    state.productsFullInfo = [];
+                }
         })
         builder.addCase(actUpdateCart.rejected, (state, action)=>{
-            state.loading ="failed";
             if(action.payload && typeof action.payload === "string"){
                 state.error = action.payload;
             }

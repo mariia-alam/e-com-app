@@ -19,7 +19,6 @@ export default function useCart() {
     },[dispatch]);
 
     const removeItemHandler = useCallback( (id: number)=>{
-        console.log("hi")
         dispatch(actUpdateCart({ productId:id  , actionType:"removeItem"}))
     },[dispatch]);
 

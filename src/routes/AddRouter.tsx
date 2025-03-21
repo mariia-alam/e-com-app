@@ -27,18 +27,17 @@ import {LottieHandler} from '@components/feedback';
 //protected routes
 import ProtectedRoutes from '@components/auth/ProtectedRoutes';
 
-
 const router = createBrowserRouter([{
     path:"/",
     element:
-    <Suspense
-        fallback={
-            <div style={{marginTop:"15%"}} className='d-flex flex-column align-items-center'>
-            <LottieHandler type='loading' message='Loading..'></LottieHandler>
-            </div>}
-    >
-        <MainLayout/>
-    </Suspense>,
+        <Suspense
+            fallback={
+                <div style={{marginTop:"15%"}} className='d-flex flex-column align-items-center'>
+                    <LottieHandler type='loading' message='Loading..'></LottieHandler>
+                </div>}
+        >
+            <MainLayout key={location.pathname}/>
+        </Suspense>,
     errorElement: <Error/>,
     children:[
         {
@@ -79,15 +78,15 @@ const router = createBrowserRouter([{
         },
         {
             path:"cart",
-            element:<ProtectedRoutes><PageSuspense><Cart/></PageSuspense></ProtectedRoutes>
+            element:<PageSuspense><ProtectedRoutes><Cart/></ProtectedRoutes></PageSuspense>
         },
         {
             path:"wishlist",
-            element:<ProtectedRoutes><PageSuspense><WishList/></PageSuspense></ProtectedRoutes>
+            element:<PageSuspense><ProtectedRoutes><WishList/></ProtectedRoutes></PageSuspense>
         },
         {
             path:"profile",
-            element:<ProtectedRoutes><PageSuspense><ProfileLayout/></PageSuspense></ProtectedRoutes>,
+            element:<PageSuspense><ProtectedRoutes ><ProfileLayout/></ProtectedRoutes></PageSuspense>,
             children: [
                 {index:true, element:<PageSuspense><Account/></PageSuspense>},
                 {path:"orders", element:<PageSuspense><Orders/></PageSuspense>}
@@ -98,6 +97,5 @@ const router = createBrowserRouter([{
 
 export default function AddRouter() {
     return (
-        <RouterProvider router={router}>
-        </RouterProvider>
-)}
+            <RouterProvider router={router} />
+    )}

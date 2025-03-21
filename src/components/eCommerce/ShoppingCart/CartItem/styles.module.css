@@ -11,12 +11,6 @@
     display: flex;
 }
 
-.productImg img {
-    height: 180px;
-    background-color: var(--gray-color);
-    display: block;
-}
-
 .productInfo {
     margin-left: 10px;
     margin-top:20px;

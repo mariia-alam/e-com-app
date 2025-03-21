@@ -21,9 +21,11 @@ const PasswordInput = <TFieldValue extends FieldValues>({
 
 return (
     <Form.Group className="mb-3">
-            <Form.Label>{label}</Form.Label>
+            <Form.Label htmlFor={name}>{label}</Form.Label>
             <div className={`${styles.passwordField} ${error ? styles.hasError : ""}`}>
                     <Form.Control
+                    id={name}
+                    autoComplete="current-password"
                     type={showPassword ? "text" : "password"}
                     {...register(name)}
                     isInvalid={error ? true : false}

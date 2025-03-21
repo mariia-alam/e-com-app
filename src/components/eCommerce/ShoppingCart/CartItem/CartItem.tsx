@@ -1,15 +1,22 @@
-import { Form, Button, Badge } from "react-bootstrap";
+import { Form, Badge } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes";
 import { memo } from "react";
-const { cartItem, product, productImg, productInfo, cartItemSelection, customBadge } = styles;
+import LazyImage from "@components/common/LazyImage/LazyImage";
+import {motion} from "framer-motion"
+import { MotionButton } from "@components/common";
+const { cartItem, product , productInfo, cartItemSelection, customBadge } = styles;
 
 type CartItemProps = Tproducts & {
     changeQuantityHandler: (id:number , quantity: number)=> void
     removeItem: (id:number) => void
 }
-const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, changeQuantityHandler, removeItem}: CartItemProps) => {
+const productVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.8 },
+    visible: { opacity: 1, y: 0, scale:1, transition: { duration: 0.4 } },
+};
 
+const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, changeQuantityHandler, removeItem}: CartItemProps) => {
 
     const renderOption  = Array(max).fill(0).map((_,idx)=>{
         const quantity = ++idx
@@ -17,27 +24,45 @@ const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, ch
             <option value={quantity} key={idx}>{quantity}</option>
         )
     }); //[0,0,0,0]
+
     const changeQuantity = async (event: React.ChangeEvent<HTMLSelectElement> )=>{
     const quantity = +event.currentTarget.value;
         changeQuantityHandler(id, quantity);
+
     }
     const remove = ()=>{
         removeItem(id);
     }
+
+
     return (
-        <div className={cartItem}>
+        <motion.div
+            exit={{ opacity: 0, x: 50, transition: { duration: 0.5, ease: "easeInOut" } }}
+            layout
+            key={id}
+            className={cartItem} variants={productVariants}
+            >
             <div className={product}>
-                    <div className={productImg}>
-                        <img
-                            src={img}
-                            alt={title}
-                        />
-                    </div>
+                    <LazyImage src={img} alt={title} />
                     <div className={productInfo}>
                         <h2>{title}</h2>
                         <h3 className="fs-6">{cat_prefix} products</h3>
                         <h3 className="fs-6">Price: <Badge bg="" className={customBadge}>{price.toFixed(2)} $</Badge></h3>
-                        <h3 className="fs-6">Total price: <Badge bg="" className={customBadge}>{quantity && (price * quantity).toFixed(2)} $</Badge></h3>
+                        <h3 className="fs-6">
+                            Total price:
+                            <motion.div
+                                key={quantity}
+                                initial={{ scale: 1 }}
+                                animate={{ scale: [1, 1.2, 1]
+                                }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                style={{ display: "inline-block" }}
+                            >
+                                <Badge bg="" className={customBadge}>
+                                    {quantity && (quantity * price).toFixed(2)} $
+                                </Badge>
+                            </motion.div>
+                        </h3>
                     </div>
             </div>
 
@@ -48,15 +73,16 @@ const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, ch
                         {renderOption}
                     </Form.Select>
                 </div>
-                <Button
+                <MotionButton
                     className={styles.customButton}
                     variant=""
                     onClick={remove}
+                    whileTap={{ scale: [0.8,1] }}
                 >
                     Remove
-                </Button>
+                </MotionButton>
             </div>
-        </div>
+        </motion.div>
     );
 });
 

@@ -1,27 +1,5 @@
 {
-  "users": [
-    {
-      "email": "mariaalam@example.com",
-      "password": "$2a$10$cdc98VVbjnv/Idd5Zfk/ou/YClpW41apgT7q6m11zEbj7wC1pGvSG",
-      "firstName": "Maria",
-      "lastName": "Alam",
-      "id": 1
-    },
-    {
-      "email": "maria@example.com",
-      "password": "$2a$10$N6Fz5rcqVL/E42vM1PIGXO7vjhY.WDg01hHQ8cagrm0wPEBU9BWrO",
-      "firstName": "Emily",
-      "lastName": "Alam",
-      "id": 2
-    },
-    {
-      "email": "sarah@gmail.com",
-      "password": "$2a$10$hp9JZjUnFMWsV0a/FzQzJeyEylelTzV1ijipRQs1k.Wb0VQgP8zwq",
-      "firstName": "sarah",
-      "lastName": "alam",
-      "id": 3
-    }
-  ],
+  "users": [],
   "categories": [
     {
       "id": 1,

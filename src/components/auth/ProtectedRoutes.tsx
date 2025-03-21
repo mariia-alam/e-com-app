@@ -1,16 +1,18 @@
-import { Navigate } from "react-router-dom"
-import { useAppSelector } from "@store/hooks"
+import { Navigate } from "react-router-dom";
+import { useAppSelector } from "@store/hooks";
 
-const ProtectedRoutes = ({children}: {children : React.ReactNode}) => {
-    const {accessToken} = useAppSelector( state => state.auth );
+const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
+    const { accessToken } = useAppSelector((state) => state.auth);
 
-    if(!accessToken){
-        return <Navigate to="/login?message=login_required"/>
+    if (!accessToken) {
+        return <Navigate to="/login?message=login_required" replace />;
     }
-    return(
+
+    return (
         <>
             {children}
         </>
-    )
-}
-export default ProtectedRoutes
+    );
+};
+
+export default ProtectedRoutes;
