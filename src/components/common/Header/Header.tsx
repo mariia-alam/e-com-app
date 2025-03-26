@@ -28,7 +28,7 @@ export default function Header() {
     return (
         <header>
             <div className={headerContainer}>
-                <h1 className={headerLogo}><span className={span}>SHOPPING</span></h1>
+                <h1 className={headerLogo}><span className={span}>Fashion Hub</span></h1>
                 <HeaderRightBar/>
             </div>
             <Navbar

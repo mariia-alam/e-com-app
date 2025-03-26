@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {Button, Form, Row , Col, Alert, Spinner} from 'react-bootstrap';
 import { Heading } from '@components/common';
 import { Input, PasswordInput } from "@components/form";
@@ -29,6 +29,8 @@ if(accessToken){
             <Alert variant="success">Account created successfully, login please</Alert>}
         {searchParams.get("message") === "login_required" &&
             <Alert variant="primary">If you want to continue, please log in</Alert>}
+        {searchParams.get("message") ==="home" &&
+            <Alert variant="primary">Don't have an account? <Link to="/register">Create one now</Link></Alert>}
             {error && <Alert variant="danger">{error}</Alert>}
 
           <Form onSubmit={handleSubmit(submitForm)}>

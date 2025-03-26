@@ -10,7 +10,6 @@ import '@styles/global.css'
 //axios
 import "@services/axios-global.js"
 
-
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}/>

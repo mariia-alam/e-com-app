@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.css";
-import { Header, Footer } from "@components/common/index";
+import { Header } from "@components/common/index";
 
 export default function MainLayout() {
 
@@ -13,8 +13,6 @@ export default function MainLayout() {
           <div className={wrapper}>
             <Outlet />
           </div>
-      <Footer />
-
     </Container>
   );
 }

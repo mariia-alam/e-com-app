@@ -113,7 +113,7 @@ return (
 
                 {/* Product Details */}
                 <h2 title={title}>{title}</h2>
-                <h3>{price.toFixed(2)} $</h3>
+                <h3>${price.toFixed(2)}</h3>
                 <h3>{quantityReachedToMax ? <p className="text-danger">maximum limit Reached</p> : <p>You can add {currentRemainingQuantity} items</p>}</h3>
 
                 {/* Add to Cart Button */}

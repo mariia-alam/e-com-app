@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import actGetProductsByPrefix from "./act/actGetProductsByCatPrefix";
+import actGetProductsByPrefix, { actGetProducts } from "./act/actGetProductsByCatPrefix";
 import { Tloading, Tproducts } from "@customtypes";
 
 interface IproductsState {
 records: Tproducts[];
+homeProducts : Tproducts[];
 loading: Tloading;
 error:string | null
 }
 
 const initialState: IproductsState = {
 records:[],
+homeProducts:[],
 loading: "idle",
 error: null,
 }
@@ -39,8 +41,23 @@ const productsSlice = createSlice({
             // state.error = action.payload as string; //another solution without if condition
             }
         });
+        //get random products
+        builder.addCase(actGetProducts.pending, (state)=>{
+            state.loading = "pending";
+            state.error = null;
+        });
+        builder.addCase(actGetProducts.fulfilled, (state, action)=>{
+            state.loading = "succeeded";
+            state.homeProducts = action.payload;
+        });
+        builder.addCase(actGetProducts.rejected , (state, action)=>{
+            state.loading = "failed";
+            if(action.payload && typeof action.payload === "string"){
+            state.error = action.payload;
+            }
+        });
     },
 })
 export const {productCleanup} = productsSlice.actions;
 export default productsSlice.reducer;
-export {actGetProductsByPrefix}
+export {actGetProductsByPrefix, actGetProducts}
