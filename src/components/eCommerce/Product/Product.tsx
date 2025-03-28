@@ -1,5 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { Button, Spinner, Modal } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { Tproducts } from "@customtypes";
 import { useAppDispatch } from "@store/hooks";
@@ -9,6 +9,7 @@ import actLikeToggle from "@store/WishList/act/actLikeToggle";
 import actUpdateCart from "@store/Cart/act/actUpdateCart";
 import { motion } from "framer-motion";
 import { MotionButton } from "@components/common";
+import {LoginModal} from "@components/common";
 
 const { product, productImg, customButton } = styles;
 
@@ -68,19 +69,7 @@ const productVariants = {
 
 return (
     <>
-        <Modal  centered show={showModal} onHide={ () => setShowModal(false) }>
-            <Modal.Header closeButton>
-            <Modal.Title>Login Required</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-            <p>If you want to continue, please log in</p>
-            </Modal.Body>
-
-            <Modal.Footer>
-            <Button variant="" style={{backgroundColor:"var(--primary-color)", color:"white"}} onClick={()=> setShowModal(false)}>Close</Button>
-            </Modal.Footer>
-        </Modal>
+        <LoginModal onClose={()=> setShowModal(false)} show={showModal}/>
 
         <motion.div
             layout
