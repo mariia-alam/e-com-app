@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from "react-router-dom";
-import { Container, NavDropdown } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Container, NavDropdown, Offcanvas } from "react-bootstrap";
 import {HeaderRightBar} from "@components/common";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 import {logout} from "@store/auth/authSlice"
@@ -15,6 +15,7 @@ const {headerContainer, headerLogo , span } = styles
 export default function Header() {
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {accessToken,user} = useAppSelector(state=>state.auth)
 
@@ -35,34 +36,40 @@ export default function Header() {
             expand="lg"
             bg=""
             data-bs-theme="dark">
-                    <Container>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mi-auto">
-                            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                            <Nav.Link  as={NavLink} to="/categories">Categories</Nav.Link>
-                            <Nav.Link as={NavLink} to="/about">About us</Nav.Link>
-                        </Nav>
-                        <Nav className="ms-auto">
-                            {
-                                accessToken ?
-                                <>
-                                    <NavDropdown title={`Welcome ${user?.firstName +" "+ user?.lastName}`} id="basic-nav-dropdown">
-                                    <NavDropdown.Item as={NavLink} to="/profile" end  >Profile</NavDropdown.Item>
-                                    <NavDropdown.Item as={NavLink} to="/profile/orders" >Orders</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item as={NavLink} to="/" onClick={ () => dispatch( logout() ) }>
-                                        Logout
-                                    </NavDropdown.Item>
+                    <Container fluid>
+                        <Navbar.Toggle aria-controls="offcanvasNavbar" />
+                        <Navbar.Offcanvas  aria-labelledby="offcanvasNavbarLabel" id="offcanvasNavbar" placement="start">
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Menu</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body className="justify-content-between">
+                            <Nav>
+                                <Nav.Link as={NavLink} to="/" data-bs-dismiss="#offcanvas" >Home</Nav.Link>
+                                <Nav.Link as={NavLink} to="/categories">Categories</Nav.Link>
+                                <Nav.Link as={NavLink} to="/about">About us</Nav.Link>
+                            </Nav>
+                            <Nav>
+                                {accessToken ? (
+                                    <NavDropdown title={`Welcome ${user?.firstName} ${user?.lastName}`} id="basic-nav-dropdown">
+                                        <NavDropdown.Item end as={NavLink} to="/profile">Account Info</NavDropdown.Item>
+                                        <NavDropdown.Item as={NavLink} to="/orders">My Orders</NavDropdown.Item>
+                                        <NavDropdown.Item as={NavLink} to="/wishlist">My Wishlist</NavDropdown.Item>
+                                        <NavDropdown.Item as={NavLink} to="/cart">My Cart</NavDropdown.Item>
+                                        <NavDropdown.Item as={NavLink} to="/reviews">My Reviews</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item  onClick={() => {dispatch(logout()); navigate("/")}}>
+                                            Logout
+                                        </NavDropdown.Item>
                                     </NavDropdown>
-                                </> :
-                                <>
-                                    <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
-                                    <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
-                                </>
-                            }
-                        </Nav>
-                        </Navbar.Collapse>
+                                ) : (
+                                    <>
+                                        <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
+                                        <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
+                                    </>
+                                )}
+                            </Nav>
+                        </Offcanvas.Body>
+                    </Navbar.Offcanvas>
 
                     </Container>
             </Navbar>

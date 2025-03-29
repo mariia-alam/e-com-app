@@ -25,6 +25,7 @@ const Orders = () => {
                         <th>Order Number</th>
                         <th>Items</th>
                         <th>Total Price</th>
+                        <th>Order Statuses</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@ const Orders = () => {
                             <td>{el.items.length} items {" / "}
                                 <span onClick={()=> viewDetailHandler(el.id)} className="text-decoration-underline" style={{ cursor: 'pointer' }}>Product Deatails</span></td>
                             <td>{el.subTotal.toFixed(2)} $</td>
+                            <td>Processing | Shipped | Delivered</td>
                         </tr>
                     ))}
                 </tbody>

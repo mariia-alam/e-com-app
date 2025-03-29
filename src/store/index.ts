@@ -15,6 +15,7 @@ import storage from "redux-persist/lib/storage";
 import wishListSlice from "@store/WishList/wishListSlice"
 import authSlice from "./auth/authSlice"
 import orderSlice from '@store/order/orderSlice'
+import ReviewsSlice from "@store/reviews/ReviewsSlice"
 
 const rootPersistConfig = {
     key:"root",
@@ -42,6 +43,7 @@ const rootReducer = combineReducers(
         wishlist: wishListSlice,
         auth: persistReducer(authPersistConfig, authSlice),
         order:orderSlice,
+        reviews: ReviewsSlice,
     }
 )
 

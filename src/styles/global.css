@@ -21,12 +21,20 @@
     border-radius:0.5rem;
 }
 .navbar-nav .dropdown-menu {
-    background-color: var(--secondary-color) !important;
+    background-color: var(--accent-color) !important;
     border-radius: 0.5rem;
-    border: none;
+    --bs-dropdown-link-active-bg:var(--secondary-color);
+
 }
 
 .navbar-nav .dropdown-menu .dropdown-item:hover {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--bs-dropdown-link-active-bg);
+}
+@media (max-width: 991px) {
+.navbar-nav .dropdown-menu {
+    border:none;
+    background-color: white !important;
+    --bs-dropdown-link-active-bg:lightgrey;
+    --bs-dropdown-link-active-color:black;
+}
 }

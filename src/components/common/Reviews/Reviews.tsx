@@ -1,71 +1,65 @@
 import { Card, Form, Button } from "react-bootstrap";
-import { useMemo, useCallback, useState, useRef } from "react";
+import { useMemo, useCallback, useState, useRef, useEffect } from "react";
 import {RatingStars} from "@components/common";
-import { useAppSelector } from "@store/hooks";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
 import { FaStar } from "react-icons/fa";
 import {LoginModal} from "@components/common";
+import { actGetReviews, actPostReview, reviewsCleanup } from "@store/reviews/ReviewsSlice";
 
-interface Review {
-    rating: number;
-    comment: string;
-    userName:string;
-}
 
-const review = [
-    {
-        rating:3,
-        comment:"Amazing quality and fast delivery! Highly recommended",
-        userName:"Sarah Wilson"
-    },
-    {
-        rating:4,
-        comment:"I love the unique designs! Will definitely shop again",
-        userName:"John dev"
-    }
-]
+// const review = [
+//     {
+//         rating:3,
+//         comment:"Amazing quality and fast delivery! Highly recommended",
+//         userName:"Sarah Wilson"
+//     },
+//     {
+//         rating:4,
+//         comment:"I love the unique designs! Will definitely shop again",
+//         userName:"John dev"
+//     }
+// ]
 
 
 const Reviews = () => {
-    const [showModal, setShowModal] = useState(false);
-
-
-    console.log("review")
 
     const firstName = useAppSelector(state=>state.auth.user?.firstName)
     const lastName = useAppSelector(state=>state.auth.user?.lastName)
+    const userId = useAppSelector(state=>state.auth.user?.id)
     const token = useAppSelector(state=>state.auth.accessToken)
+    const {error,reviews} = useAppSelector((state) => state.reviews);
 
+
+    const dispatch = useAppDispatch();
+
+
+    const [showModal, setShowModal] = useState(false);
     const [rating, setRating] = useState<number | null>(null);
+    const [userName, setUserName] = useState<string>(`${firstName} ${lastName}`);
     const commentRef = useRef<HTMLTextAreaElement | null>(null);
 
-
-    const [userName, setUserName] = useState<string>(`${firstName} ${lastName}`);
-    const [reviews, setReviews] = useState<Review[]>(review);
 
     const handleRate = useCallback((newRating: number) => {
         setRating(newRating);
     }, []);
 
 
-
-const handleSubmit = () => {
-    if(!token){
+    const handleSubmit = () => {
+    if (!token) {
         setShowModal(true);
         return;
     }
     const commentValue = commentRef.current?.value;
-
     if (rating && commentValue && userName) {
-        setReviews((prevReviews) => [...prevReviews, { rating, comment: commentValue, userName }]);
+        const newReview = { userId , userName:userName, rate:rating , comment: commentValue };
+        dispatch(actPostReview(newReview));
         setRating(null);
         setUserName(`${firstName} ${lastName}`);
-
         if (commentRef.current) {
             commentRef.current.value = "";
         }
-    }
-};
-
+        }
+    };
 
     const memoizedReviews = useMemo(() => {
     return reviews.map((review, index) => (
@@ -75,7 +69,7 @@ const handleSubmit = () => {
             <h5 className="mt-2">{review.userName}</h5>
             <div>
                 {[...Array(5)].map((_ , i) => (
-                <FaStar key={i} size={20} color={i < review.rating ? "#ffc107" : "#e4e5e9"} />
+                <FaStar key={i} size={20} color={i < review.rate ? "#ffc107" : "#e4e5e9"} />
                 ))}
             </div>
             </div>
@@ -84,6 +78,12 @@ const handleSubmit = () => {
         </Card>
     ));
 }, [reviews]);
+
+
+useEffect(() => {
+        dispatch(actGetReviews());
+        return()=>{dispatch(reviewsCleanup())}
+}, [dispatch]);
 
 
 return(
@@ -107,7 +107,8 @@ return(
             ref={commentRef}
         />
         </Form.Group>
-        <Button variant="primary" className="mt-3" onClick={handleSubmit}>Submit</Button>
+                {error && <p className="text-danger mt-1">{error}</p>}
+        <Button variant="primary" className="mt-2" onClick={handleSubmit}>Submit</Button>
     </Form>
     </>
 );

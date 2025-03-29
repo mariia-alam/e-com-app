@@ -1,5 +1,13 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "mariaalam@example.com",
+      "password": "$2a$10$4./NqN7zuEb.k9UodSYgMOXtWdaxMMhsClO4W7nuC3bm9Ph64nPJ.",
+      "firstName": "Maria",
+      "lastName": "Alam",
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "id": 1,
@@ -362,7 +370,71 @@
       "img": "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564"
     }
   ],
-  "wishlist": [],
-  "orders": [],
-  "cart": []
+  "wishlist": [
+    {
+      "userId": 1,
+      "productId": 6,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "productId": 12,
+      "id": 3
+    }
+  ],
+  "orders": [
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 7,
+          "title": "2-pack Cargo Sweatshorts",
+          "price": 14,
+          "cat_prefix": "baby",
+          "max": 3,
+          "img": "https://image.hm.com/assets/hm/1b/f3/1bf3fb308b4fa2555c5354c2793a53421508b535.jpg?imwidth=564",
+          "quantity": 1
+        },
+        {
+          "id": 11,
+          "title": "BAGGY JEANS",
+          "price": 45,
+          "cat_prefix": "men",
+          "max": 4,
+          "img": "https://image.hm.com/assets/hm/19/76/197605aec5741ec2b504b8aff5c8049c76f2be72.jpg?imwidth=1260",
+          "quantity": 1
+        },
+        {
+          "id": 18,
+          "title": "Cotton Dress",
+          "price": 44,
+          "cat_prefix": "women",
+          "max": 4,
+          "img": "https://image.hm.com/assets/hm/aa/c5/aac586dc60e2649306cbf93f5c7c69058823900e.jpg?imwidth=564",
+          "quantity": 1
+        },
+        {
+          "id": 19,
+          "title": "Flounced Chiffon Dress",
+          "price": 39,
+          "cat_prefix": "women",
+          "max": 4,
+          "img": "https://image.hm.com/assets/hm/da/54/da54b0da83d48432f2955a538cb59d8ced155ac6.jpg?imwidth=564",
+          "quantity": 1
+        }
+      ],
+      "subTotal": 142,
+      "id": 1
+    }
+  ],
+  "cart": [],
+  "reviews": [
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 5,
+      "comment": "Amazing quality and fast delivery! Highly recommended",
+      "id": 1
+    }
+  ]
 }

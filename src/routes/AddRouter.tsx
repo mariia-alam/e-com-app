@@ -3,8 +3,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
 //layouts
 const MainLayout = lazy(() => import("@layouts/MainLayout/MainLayout"));
-//profile layout
-import { ProfileLayout } from '@layouts/index';
 
 //pages
 import Error from '@pages/Error';
@@ -86,12 +84,12 @@ const router = createBrowserRouter([{
         },
         {
             path:"profile",
-            element:<PageSuspense><ProtectedRoutes ><ProfileLayout/></ProtectedRoutes></PageSuspense>,
-            children: [
-                {index:true, element:<PageSuspense><Account/></PageSuspense>},
-                {path:"orders", element:<PageSuspense><Orders/></PageSuspense>}
-            ]
-        }
+            element:<PageSuspense><ProtectedRoutes><Account/></ProtectedRoutes></PageSuspense>
+        },
+        {
+            path:"orders",
+            element:<PageSuspense><ProtectedRoutes><Orders/></ProtectedRoutes></PageSuspense>
+        },
     ]
 }])
 
