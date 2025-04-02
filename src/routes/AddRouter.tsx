@@ -24,6 +24,7 @@ import {LottieHandler} from '@components/feedback';
 
 //protected routes
 import ProtectedRoutes from '@components/auth/ProtectedRoutes';
+import CheckoutOrder from '@pages/CheckoutOrder';
 
 const router = createBrowserRouter([{
     path:"/",
@@ -90,6 +91,11 @@ const router = createBrowserRouter([{
             path:"orders",
             element:<PageSuspense><ProtectedRoutes><Orders/></ProtectedRoutes></PageSuspense>
         },
+        {
+            path:"checkout",
+            element:<PageSuspense><ProtectedRoutes><CheckoutOrder/></ProtectedRoutes></PageSuspense>
+        },
+
     ]
 }])
 

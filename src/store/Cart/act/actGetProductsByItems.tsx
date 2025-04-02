@@ -9,7 +9,7 @@ type TResponse = Tproducts[];
 const actGetProductsByItems = createAsyncThunk("cart/actGetProductsByItems",
     async (_, thunkAPI)=>{
         const { rejectWithValue, getState, fulfillWithValue, signal } = thunkAPI
-        const { cart } = getState() as RootState;
+        const {cart } = getState() as RootState;
         const itemsId = Object.keys(cart.items);
 
         try{

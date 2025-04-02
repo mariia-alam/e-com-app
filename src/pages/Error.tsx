@@ -11,7 +11,7 @@ export default function Error() {
         <Container>
             <div className="d-flex flex-column align-items-center" style={{marginTop:"15%"}}>
                 <LottieHandler type="notFound" message="somthing went wrong"></LottieHandler>
-                <Link to='/' replace={true} >Go back to stay save</Link>
+                <Link to='/' replace={true} >Go back to stay safe</Link>
             </div>
         </Container>
     )

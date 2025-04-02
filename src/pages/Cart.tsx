@@ -16,6 +16,7 @@ const Cart = () => {
         products,
         userAccessToken,
         orderStatus,
+        navigate,
     } = useCart();
 
     const [showLottie, setShowLottie] = useState(false);
@@ -53,10 +54,12 @@ return (
                             animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.7 } }}
                             exit={{ opacity: 0, x: 50, transition: { duration: 0.4, ease: "easeInOut" } }}
                         >
+                        <>
                             <SubTotalPrice
                                 userAccessToken={userAccessToken}
                                 products={products}
                             />
+                        </>
                         </motion.div>
                     </>
                 ) : (
@@ -67,9 +70,12 @@ return (
                             exit= {{ opacity: 0, y: 60, transition: { duration: 0.4 } }}
                         >
                             {orderStatus === "succeeded" ? (
+                                <>
                                 <LottieHandler type="success" message="Your order has been confirmed successfully" />
+                                <p onClick={()=> navigate("/orders")} className="text-center text-decoration-underline text-success" style={{ cursor: "pointer" }}>See orders</p>
+                                </>
                             ) : (
-                                <LottieHandler type="emptyCart" message="Your cart is empty" />
+                                <LottieHandler type="emptyCart" message="Your Cart is empty" />
                             )}
                         </motion.div>
                     )
