@@ -372,5 +372,14 @@
   ],
   "cart": [],
   "wishlist": [],
-  "orders": []
+  "orders": [],
+  "reviews": [
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 5,
+      "comment": "Amazing quality and fast delivery! Highly recommended",
+      "id": 1
+    }
+  ]
 }
