@@ -99,7 +99,6 @@ return (
                 <div className={productImg}>
                     <img src={img} alt={title} />
                 </div>
-
                 {/* Product Details */}
                 <h2 title={title}>{title}</h2>
                 <h3>${price.toFixed(2)}</h3>

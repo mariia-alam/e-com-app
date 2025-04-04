@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card} from "react-bootstrap";
+import { Row, Col, Card} from "react-bootstrap";
 import { motion } from "framer-motion";
 import {  FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import {Reviews} from "../components/common";
@@ -26,8 +26,8 @@ const About = () => {
 
 
   return (
-    <Container className="overflow-hidden mt-5">
-
+    <div className="overflow-hidden mt-5">
+      <div className="w-75 m-auto">
       <motion.div
       className="text-center mb-5 w-75 m-auto"
         initial={{ opacity: 0, y: 50 }}
@@ -39,9 +39,6 @@ const About = () => {
               We are a fashion e-commerce store dedicated to providing high-quality, trendy, and unique designs for everyone.
         </p>
       </motion.div>
-
-
-      {/* Brand Introduction */}
 
 
       {/* Story & Vision */}
@@ -92,11 +89,12 @@ const About = () => {
     className="text-center mb-5">
       <Reviews/>
     </motion.div>
+</div>
 
-{/* Contact Us */}
-
+      {/* Contact Us */}
       <motion.div
-        className="text-center mt-5 bg-body-secondary rounded-1 py-3"
+      style={{backgroundColor:"var(--accent-color)"}}
+        className="text-center mt-5 rounded-1 py-3 text-white"
         initial={{ opacity: 0 , y: 100 }}
         whileInView={{ opacity: 1, y:0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -105,14 +103,14 @@ const About = () => {
 
       <p>
         <span className="fw-bold">Email: </span>
-        <a href="mailto:support@fashionstore.com" className="text-decoration-none">
+        <a style={{ color: "#E2E8F0" }} href="mailto:support@fashionstore.com" className="text-decoration-none">
           support@fashionstore.com
         </a>
       </p>
 
       <p>
         <span className="fw-bold">Phone: </span>
-        <a href="tel:+1234567890" className="text-decoration-none">
+        <a style={{ color: "#E2E8F0" }} href="tel:+1234567890" className="text-decoration-none">
           +1 234 567 890
         </a>
       </p>
@@ -120,6 +118,7 @@ const About = () => {
       <p>
         <span className="fw-bold">Address: </span>
         <a
+          style={{ color: "#E2E8F0" }}
           href="https://www.google.com/maps?q=123+Fashion+Street,+New+York,+NY"
           target="_blank"
           rel="noopener noreferrer"
@@ -138,7 +137,7 @@ const About = () => {
         </div>
       </motion.div>
 
-    </Container>
+    </div>
   );
 };
 

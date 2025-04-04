@@ -24,7 +24,7 @@ export default function LottieHandler({ type , message }: LottieHandleProps) {
     const lottie = lottieFilesMap[type];
     return(
         <>
-        <div className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center mt-5 py-5">
             <Lottie animationData={lottie} style={{width:"300px"}}></Lottie>
             {message && <h3 className={type==="error" ? "fs-5 text-danger" : "fs-5"} >{message}</h3>}
         </div>

@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Heading } from "@components/common";
 import { CartItemList, SubTotalPrice } from "@components/eCommerce";
 import { Container } from "react-bootstrap";
 import { Loading, LottieHandler } from "@components/feedback";
@@ -16,6 +15,7 @@ const Cart = () => {
         products,
         userAccessToken,
         orderStatus,
+        navigate,
     } = useCart();
 
     const [showLottie, setShowLottie] = useState(false);
@@ -31,8 +31,7 @@ const Cart = () => {
 
 
 return (
-    <Container>
-        <Heading title="Cart" />
+    <Container className="my-5">
         <Loading status={loading} error={error} type="cart">
             <AnimatePresence mode="wait">
                 {products.length > 0 ? (
@@ -53,10 +52,12 @@ return (
                             animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.7 } }}
                             exit={{ opacity: 0, x: 50, transition: { duration: 0.4, ease: "easeInOut" } }}
                         >
+                        <>
                             <SubTotalPrice
                                 userAccessToken={userAccessToken}
                                 products={products}
                             />
+                        </>
                         </motion.div>
                     </>
                 ) : (
@@ -67,9 +68,12 @@ return (
                             exit= {{ opacity: 0, y: 60, transition: { duration: 0.4 } }}
                         >
                             {orderStatus === "succeeded" ? (
+                                <>
                                 <LottieHandler type="success" message="Your order has been confirmed successfully" />
+                                <p onClick={()=> navigate("/orders")} className="text-center text-decoration-underline text-success" style={{ cursor: "pointer" }}>See orders</p>
+                                </>
                             ) : (
-                                <LottieHandler type="emptyCart" message="Your cart is empty" />
+                                <LottieHandler type="emptyCart" message="Your Cart is empty" />
                             )}
                         </motion.div>
                     )

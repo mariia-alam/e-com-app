@@ -7,20 +7,6 @@ import {LoginModal} from "@components/common";
 import { actGetReviews, actPostReview, reviewsCleanup } from "@store/reviews/ReviewsSlice";
 
 
-// const review = [
-//     {
-//         rating:3,
-//         comment:"Amazing quality and fast delivery! Highly recommended",
-//         userName:"Sarah Wilson"
-//     },
-//     {
-//         rating:4,
-//         comment:"I love the unique designs! Will definitely shop again",
-//         userName:"John dev"
-//     }
-// ]
-
-
 const Reviews = () => {
 
     const firstName = useAppSelector(state=>state.auth.user?.firstName)

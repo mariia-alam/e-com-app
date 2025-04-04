@@ -1,17 +1,15 @@
-import { Container } from "react-bootstrap";
 import { Product } from "@components/eCommerce";
 import { Loading } from "@components/feedback";
 import { GridList } from "@components/common";
 import { Tproducts } from "@customtypes";
-import {Heading} from "@components/common";
 import useProducts from "@hooks/useProducts";
 
 const Products = () => {
-  const {loading, prefix="", productsFullInfo, error, records} = useProducts();
+  const {loading , productsFullInfo, error, records} = useProducts();
   return (
-    <Container>
-    <Heading title={prefix.toLocaleUpperCase()+" Products"}></Heading>
+    <div>
       <Loading type="product" status={loading} error={error}>
+
             <GridList
             emptyMessage="There are no products in this category"
             records={productsFullInfo}
@@ -28,7 +26,7 @@ const Products = () => {
                       price={record.price} {...records} />
             }/>
       </Loading>
-    </Container>
+    </div>
   );
 };
 

@@ -1,17 +1,16 @@
 import { useAppSelector } from "@store/hooks";
-import { Heading } from "@components/common";
+import { Container } from "react-bootstrap";
 const Account = () => {
     const accountInfo = useAppSelector( state => state.auth.user );
 
     return (
-        <>
-        <Heading title="Account Info"/>
+        <Container>
         <ul>
             <li>First Name: {accountInfo?.firstName}</li>
             <li>Last Name: {accountInfo?.lastName}</li>
             <li>Email: {accountInfo?.email}</li>
         </ul>
-        </>
+        </Container>
     )
 }
 export default Account;

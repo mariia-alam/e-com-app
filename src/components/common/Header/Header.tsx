@@ -9,21 +9,31 @@ import {logout} from "@store/auth/authSlice"
 import { useEffect } from "react";
 import { actGetWishList } from "@store/WishList/wishListSlice";
 import { actGetCart } from "@store/Cart/cartSlice";
+import { actGetCategories } from "@store/categories/categoriesSlice";
+import { useParams } from "react-router-dom";
 
 const {headerContainer, headerLogo , span } = styles
 
 export default function Header() {
+    const { prefix } = useParams();
+
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const {accessToken,user} = useAppSelector(state=>state.auth)
+    const {records} = useAppSelector(state=>state.categories)
+
+    const currentCategory = records.find(cat => cat.prefix === prefix);
+    const dropdownTitle = currentCategory ? `Categories - ${currentCategory.title}` : "Categories";
+
 
     useEffect(()=>{
         if(accessToken){
         dispatch(actGetWishList("productsIds"));
-        dispatch(actGetCart());;
+        dispatch(actGetCart());
         }
+        dispatch(actGetCategories());
     },[dispatch, accessToken]);
 
     return (
@@ -45,7 +55,9 @@ export default function Header() {
                         <Offcanvas.Body className="justify-content-between">
                             <Nav>
                                 <Nav.Link as={NavLink} to="/" data-bs-dismiss="#offcanvas" >Home</Nav.Link>
-                                <Nav.Link as={NavLink} to="/categories">Categories</Nav.Link>
+                                    <NavDropdown title={dropdownTitle} id="basic-nav-dropdown">
+                                        {records.map((cat)=> <NavDropdown.Item key={cat.id} end as={NavLink} to={`/categories/products/${cat.prefix}`}>{cat.title}</NavDropdown.Item> )}
+                                    </NavDropdown>
                                 <Nav.Link as={NavLink} to="/about">About us</Nav.Link>
                             </Nav>
                             <Nav>

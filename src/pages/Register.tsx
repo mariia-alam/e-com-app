@@ -1,4 +1,4 @@
-import {Button, Form, Row , Col, Spinner} from 'react-bootstrap';
+import {Button, Form, Row , Col, Spinner, Container} from 'react-bootstrap';
 import { Heading } from '@components/common';
 import { Input, PasswordInput } from "@components/form";
 import { Navigate } from "react-router-dom";
@@ -23,7 +23,7 @@ if(accessToken){
 }
 
   return (
-      <>
+      <Container>
       <Heading title='User Registration'/>
       <Row>
         <Col md={{span:6, offset:3}}>
@@ -91,6 +91,6 @@ if(accessToken){
           </Form>
         </Col>
       </Row>
-      </>
+      </Container>
   )
 }

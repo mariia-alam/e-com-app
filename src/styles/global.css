@@ -1,3 +1,4 @@
+
 :root {
     --primary-color: #42b883;
     --secondary-color: #347474;
@@ -5,6 +6,12 @@
     --background-color: #ff7e67;
     --gray-color:lightgray;
 }
+body {
+  font-family: serif !important;
+}
+
+
+
 .notFound{
     padding-top:15%;
     text-align: center;
@@ -15,14 +22,18 @@
 .notFound p {
     font-size:50px;
 }
-
+/* .nav-link{
+    color:white !important;
+} */
+/* .nav-link.active{
+    color:red
+} */
 .navbar{
     background:var(--accent-color);
-    border-radius:0.5rem;
+    color:white!important;
 }
 .navbar-nav .dropdown-menu {
     background-color: var(--accent-color) !important;
-    border-radius: 0.5rem;
     --bs-dropdown-link-active-bg:var(--secondary-color);
 
 }

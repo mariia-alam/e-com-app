@@ -39,7 +39,6 @@ const cartSlice = createSlice({
         })
         builder.addCase(actGetProductsByItems.fulfilled, (state, action)=>{
             state.loading="succeeded";
-        // state.productFullInfo = Array.isArray(action.payload) ? action.payload : [action.payload]; 
             state.productsFullInfo = action.payload;
         })
         builder.addCase(actGetProductsByItems.rejected, (state, action)=>{

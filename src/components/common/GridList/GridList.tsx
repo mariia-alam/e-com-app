@@ -20,7 +20,7 @@ const containerVariants = {
 
 const GridList = <T extends HasID>({ records, renderItem, emptyMessage }: GridListProps<T>) => {
     return (
-        <Container>
+        <Container className="my-5">
             <motion.div layout variants={containerVariants} initial="hidden" animate="visible">
                 <Row>
                     <AnimatePresence mode="popLayout">

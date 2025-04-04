@@ -7,7 +7,6 @@ const MainLayout = lazy(() => import("@layouts/MainLayout/MainLayout"));
 //pages
 import Error from '@pages/Error';
 const Home = lazy(()=> import("@pages/Home"))
-const Categories = lazy(()=> import("@pages/Categories"))
 const Products = lazy(()=> import("@pages/Products"))
 const Cart = lazy(()=> import("@pages/Cart"))
 const About = lazy(()=> import("@pages/About"))
@@ -24,6 +23,7 @@ import {LottieHandler} from '@components/feedback';
 
 //protected routes
 import ProtectedRoutes from '@components/auth/ProtectedRoutes';
+import CheckoutOrder from '@pages/CheckoutOrder';
 
 const router = createBrowserRouter([{
     path:"/",
@@ -41,10 +41,6 @@ const router = createBrowserRouter([{
         {
             index:true,
             element: <PageSuspense><Home/></PageSuspense>
-        },
-        {
-            path:"categories",
-            element: <PageSuspense><Categories/></PageSuspense>,
         },
         {
             path:"categories/products/:prefix",
@@ -90,6 +86,11 @@ const router = createBrowserRouter([{
             path:"orders",
             element:<PageSuspense><ProtectedRoutes><Orders/></ProtectedRoutes></PageSuspense>
         },
+        {
+            path:"checkout",
+            element:<PageSuspense><ProtectedRoutes><CheckoutOrder/></ProtectedRoutes></PageSuspense>
+        },
+
     ]
 }])
 

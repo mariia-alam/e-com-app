@@ -8,7 +8,7 @@ export default function ProductSkeleton() {
                 <ContentLoader
                     speed={1}
                     width={150}
-                    height={322}
+                    height={400}
                     viewBox="0 0 150 322"
                     backgroundColor="#e6e6e6"
                     foregroundColor="#fcfcfc"

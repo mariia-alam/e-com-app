@@ -1,18 +1,17 @@
-import { Heading } from "@components/common"
 import { Loading, LottieHandler } from "@components/feedback";
 import {GridList} from "@components/common";
 import { Product } from "@components/eCommerce";
 import { Tproducts } from "@customtypes";
 import useWishList from "@hooks/useWishList";
 import { AnimatePresence, motion } from "framer-motion";
+import { Container } from "react-bootstrap";
 
 export default function WishList() {
         const {loading , error , products , productsFullInfo} = useWishList();
 
 
 return (
-<>
-<Heading title="Wish List"></Heading>
+<Container>
         <Loading type="product" status={loading} error={error}>
                 <AnimatePresence mode="wait">
                 {products.length > 0?
@@ -47,6 +46,6 @@ return (
                 }
                 </AnimatePresence>
         </Loading>
-</>
+</Container>
 )
 }

@@ -12,32 +12,27 @@
     {
       "id": 1,
       "title": "Men",
-      "prefix": "men",
-      "img": "https://www.shutterstock.com/image-photo/charming-mature-blond-male-model-600nw-1590152170.jpg"
+      "prefix": "men"
     },
     {
       "id": 2,
       "title": "Women",
-      "prefix": "women",
-      "img": "https://img.freepik.com/premium-photo/portrait-beautiful-young-woman-white-sweater-jeans-isolated-gray-background_146671-2493.jpg"
+      "prefix": "women"
     },
     {
       "id": 3,
       "title": "Kids",
-      "prefix": "kids",
-      "img": "https://www.shutterstock.com/image-photo/fashion-concept-stylish-children-posing-600nw-2451484593.jpg"
+      "prefix": "kids"
     },
     {
       "id": 4,
       "title": "Baby",
-      "prefix": "baby",
-      "img": "https://static.vecteezy.com/system/resources/thumbnails/034/324/091/small/baby-wearing-white-shirt-bodysuit-mockup-at-gray-background-design-onesie-template-print-presentation-mock-up-ai-generated-free-photo.jpeg"
+      "prefix": "baby"
     },
     {
       "id": 5,
       "title": "Sport",
-      "prefix": "sport",
-      "img": "https://www.printsimple.eu/images/u/product-info/s/roly-imola-sports-t-shirt.33211.15.1709059951.100.jpg"
+      "prefix": "sport"
     }
   ],
   "products": [
@@ -370,15 +365,30 @@
       "img": "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564"
     }
   ],
+  "cart": [
+    {
+      "userId": 1,
+      "items": {
+        "2": 1,
+        "3": 1
+      },
+      "id": 1
+    }
+  ],
   "wishlist": [
     {
       "userId": 1,
-      "productId": 6,
+      "productId": 2,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "productId": 3,
       "id": 2
     },
     {
       "userId": 1,
-      "productId": 12,
+      "productId": 5,
       "id": 3
     }
   ],
@@ -387,47 +397,39 @@
       "userId": 1,
       "items": [
         {
-          "id": 7,
-          "title": "2-pack Cargo Sweatshorts",
-          "price": 14,
-          "cat_prefix": "baby",
-          "max": 3,
-          "img": "https://image.hm.com/assets/hm/1b/f3/1bf3fb308b4fa2555c5354c2793a53421508b535.jpg?imwidth=564",
-          "quantity": 1
-        },
-        {
-          "id": 11,
-          "title": "BAGGY JEANS",
-          "price": 45,
+          "id": 1,
+          "title": "Regular Fit Jersey top",
+          "price": 9.99,
           "cat_prefix": "men",
           "max": 4,
-          "img": "https://image.hm.com/assets/hm/19/76/197605aec5741ec2b504b8aff5c8049c76f2be72.jpg?imwidth=1260",
+          "img": "https://image.hm.com/assets/hm/54/bc/54bc0275dcbbea83d05bc15f290ab4a59f9e78c5.jpg?imwidth=1260",
           "quantity": 1
         },
         {
-          "id": 18,
-          "title": "Cotton Dress",
-          "price": 44,
-          "cat_prefix": "women",
-          "max": 4,
-          "img": "https://image.hm.com/assets/hm/aa/c5/aac586dc60e2649306cbf93f5c7c69058823900e.jpg?imwidth=564",
-          "quantity": 1
-        },
-        {
-          "id": 19,
-          "title": "Flounced Chiffon Dress",
-          "price": 39,
-          "cat_prefix": "women",
-          "max": 4,
-          "img": "https://image.hm.com/assets/hm/da/54/da54b0da83d48432f2955a538cb59d8ced155ac6.jpg?imwidth=564",
+          "id": 2,
+          "title": "Loose Fit Utility Jacket",
+          "price": 59.5,
+          "cat_prefix": "men",
+          "max": 3,
+          "img": "https://image.hm.com/assets/hm/90/66/906635eb840d4858885eaa4e67b5d3ae4eaf9664.jpg?imwidth=1536",
           "quantity": 1
         }
       ],
-      "subTotal": 142,
+      "subTotal": 74.49,
+      "shippingInfo": {
+        "fullName": "Maria Alam",
+        "address": "baghdad",
+        "city": "damascus",
+        "country": "Syria",
+        "zipCode": "123456"
+      },
+      "paymentMethod": "paypal",
+      "shippingOption": "standard",
+      "cardDetails": null,
+      "date": "2025-04-03T08:37:27.391Z",
       "id": 1
     }
   ],
-  "cart": [],
   "reviews": [
     {
       "userId": 1,

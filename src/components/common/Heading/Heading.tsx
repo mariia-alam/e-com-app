@@ -1,10 +1,8 @@
 import { memo } from "react"
-import styles from "./styles.module.css"
 
 const  Heading = memo(({ title  } : { title : string}) => {
-    // console.log("render heading")
     return (
-        <h2 className={styles.heading}>{title}</h2>
+        <h2 className="my-4" style={{color:"var(--accent-color"}}>{title}</h2>
     )
 })
 export default Heading;
