@@ -68,3 +68,8 @@ Instead of setting up the frontend locally, you can:
 ```bash
 https://e-com-app-omega.vercel.app/
 ```
+
+## ℹ️ Note
+
+This project has been fully redesigned on the `redesign` branch
+The `main` branch contains the old version.
