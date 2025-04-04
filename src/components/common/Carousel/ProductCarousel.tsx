@@ -107,7 +107,7 @@ return(
                     <motion.img
                         loading="lazy"
                         className="img-fluid"
-                        style={{ maxHeight: `${imgHeight}`, objectFit: "cover", borderRadius:"10px" }}
+                        style={{ maxHeight: `${imgHeight}`, minHeight:"150px" , objectFit: "cover", borderRadius:"10px" }}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                         src={image}

@@ -94,9 +94,9 @@ export default function Home() {
 
 {isSmallScreen ?
   (
-      <ProductCarousel carouselHeight="40vh" imgHeight="330px" itemsNumber={1}/>
+      <ProductCarousel carouselHeight="40vh" imgHeight="30vh" itemsNumber={1}/>
   ):(
-      <ProductCarousel carouselHeight="40vh" imgHeight="300px" itemsNumber={3}/>
+      <ProductCarousel carouselHeight="40vh" imgHeight="30vh" itemsNumber={3}/>
     )
 }
 
