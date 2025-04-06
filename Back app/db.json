@@ -11,28 +11,104 @@
   "categories": [
     {
       "id": 1,
-      "title": "Men",
-      "prefix": "men"
+      "title": "MEN",
+      "prefix": "men",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "T-SHIRTS & TOPS",
+          "prefix": "t-shirts-tops"
+        },
+        {
+          "id": 2,
+          "title": "DENIM & PANTS",
+          "prefix": "denim-pants"
+        },
+        {
+          "id": 3,
+          "title": "FORMALWEAR",
+          "prefix": "formal-wear"
+        },
+        {
+          "id": 4,
+          "title": "SPORT",
+          "prefix": "sport"
+        },
+        {
+          "id": 5,
+          "title": "ACCESSORIES",
+          "prefix": "accessories"
+        },
+        {
+          "id": 6,
+          "title": "OUTWEAR",
+          "prefix": "out-wear"
+        }
+      ]
     },
     {
       "id": 2,
-      "title": "Women",
-      "prefix": "women"
+      "title": "WOMEN",
+      "prefix": "women",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "T-SHIRTS & TOPS",
+          "prefix": "t-shirts-tops"
+        },
+        {
+          "id": 2,
+          "title": "DENIM & PANTS",
+          "prefix": "denim-pants"
+        },
+        {
+          "id": 3,
+          "title": "FORMALWEAR",
+          "prefix": "formal-wear"
+        },
+        {
+          "id": 4,
+          "title": "SPORT",
+          "prefix": "sport"
+        },
+        {
+          "id": 5,
+          "title": "ACCESSORIES",
+          "prefix": "accessories"
+        },
+        {
+          "id": 6,
+          "title": "OUTWEAR",
+          "prefix": "out-wear"
+        },
+        {
+          "id": 7,
+          "title": "DRESSES",
+          "prefix": "dresses"
+        }
+      ]
     },
     {
       "id": 3,
-      "title": "Kids",
-      "prefix": "kids"
+      "title": "KIDS",
+      "prefix": "kids",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "GIRLS",
+          "prefix": "girls"
+        },
+        {
+          "id": 2,
+          "title": "BOYS",
+          "prefix": "boys"
+        }
+      ]
     },
     {
       "id": 4,
-      "title": "Baby",
-      "prefix": "baby"
-    },
-    {
-      "id": 5,
-      "title": "Sport",
-      "prefix": "sport"
+      "title": "NEWBORN",
+      "prefix": "newborn"
     }
   ],
   "products": [
@@ -42,7 +118,11 @@
       "price": 9.99,
       "cat_prefix": "men",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/54/bc/54bc0275dcbbea83d05bc15f290ab4a59f9e78c5.jpg?imwidth=1260"
+      "subcategory": "t-shirts-tops",
+      "img": [
+        "https://image.hm.com/assets/hm/54/bc/54bc0275dcbbea83d05bc15f290ab4a59f9e78c5.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/96/08/9608ba3ff59abb98794f96c2864675ea480a3fa4.jpg?imwidth=564"
+      ]
     },
     {
       "id": 2,
@@ -50,7 +130,11 @@
       "price": 59.5,
       "cat_prefix": "men",
       "max": 3,
-      "img": "https://image.hm.com/assets/hm/90/66/906635eb840d4858885eaa4e67b5d3ae4eaf9664.jpg?imwidth=1536"
+      "subcategory": "out-wear",
+      "img": [
+        "https://image.hm.com/assets/hm/90/66/906635eb840d4858885eaa4e67b5d3ae4eaf9664.jpg?imwidth=1536",
+        "https://image.hm.com/assets/hm/23/a8/23a875fe065934afd82572df76a24e76e4bfc7a3.jpg?imwidth=564"
+      ]
     },
     {
       "id": 3,
@@ -58,7 +142,11 @@
       "price": 10,
       "cat_prefix": "men",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/07/2d/072d1c38db2cb5c10cdd968d09e294d0071e455b.jpg?imwidth=1260"
+      "subcategory": "t-shirts-tops",
+      "img": [
+        "https://image.hm.com/assets/hm/91/a7/91a73921ec5bd24f204a3b7f803295e7e00719c2.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/8d/9f/8d9fd3378a42ba712d119abaff0eee33db2728d4.jpg?imwidth=564"
+      ]
     },
     {
       "id": 4,
@@ -66,21 +154,30 @@
       "price": 39,
       "cat_prefix": "women",
       "max": 2,
-      "img": "https://image.hm.com/assets/hm/5c/be/5cbed0421f76bfd31909a5a4a3d36bfc68567f94.jpg?imwidth=1260"
+      "subcategory": "formal-wear",
+      "img": [
+        "https://image.hm.com/assets/hm/5c/be/5cbed0421f76bfd31909a5a4a3d36bfc68567f94.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/0a/df/0adf01fec03ce7a257b78c1d6b267a84ee164ae8.jpg?imwidth=564"
+      ]
     },
     {
       "id": 5,
       "title": "Embroidered Blouse with Peter Pan Collar",
       "price": 29,
       "cat_prefix": "women",
+      "subcategory": "t-shirts-tops",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/dc/d1/dcd1b55d5074e4bb0c0dd34207227994fa36f0e9.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/dc/d1/dcd1b55d5074e4bb0c0dd34207227994fa36f0e9.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/7b/ff/7bffbf6f6cc4ef8a4f71315061d90bfde2f8cab2.jpg?imwidth=564"
+      ]
     },
     {
       "id": 6,
       "title": "2-piece Cotton Set",
       "price": 24.99,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 5,
       "img": "https://image.hm.com/assets/hm/17/b4/17b40edca01820df26241d6a66bfc0071ab38a79.jpg?imwidth=564"
     },
@@ -88,7 +185,8 @@
       "id": 7,
       "title": "2-pack Cargo Sweatshorts",
       "price": 14,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 3,
       "img": "https://image.hm.com/assets/hm/1b/f3/1bf3fb308b4fa2555c5354c2793a53421508b535.jpg?imwidth=564"
     },
@@ -96,57 +194,85 @@
       "id": 8,
       "title": "Medium-Support Sports Bra with DryMove™",
       "price": 17,
-      "cat_prefix": "sport",
+      "cat_prefix": "women",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/40/b7/40b7585ecb4f65c8b59ed8911721dc30abf0869c.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/40/b7/40b7585ecb4f65c8b59ed8911721dc30abf0869c.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/22/fb/22fb4f8b109f671054842139555530105a7b5455.jpg?imwidth=564"
+      ]
     },
     {
       "id": 9,
       "title": "Loose Fit Printed Sweatshirt",
       "price": 34.5,
       "cat_prefix": "men",
+      "subcategory": "t-shirts-tops",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/c1/2d/c12dbe5a42f3683734900502e07343b8cc59d95a.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/51/3c/513c6a2031105aa167bcacc4d05877551d2ed213.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/fc/60/fc602dd9fac214993a49fd70671b0449de4fcc84.jpg?imwidth=564"
+      ]
     },
     {
       "id": 10,
       "title": "Loose Fit Printed T-shirt",
       "price": 13,
       "cat_prefix": "men",
+      "subcategory": "t-shirts-tops",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/b4/04/b404cce0eda446896172c7a11aad00cbfd742b8b.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/b4/04/b404cce0eda446896172c7a11aad00cbfd742b8b.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/8f/21/8f215592ecd15ad43fada0ef5c47f141a34e1862.jpg?imwidth=564"
+      ]
     },
     {
       "id": 11,
       "title": "BAGGY JEANS",
       "price": 45,
       "cat_prefix": "men",
+      "subcategory": "denim-pants",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/19/76/197605aec5741ec2b504b8aff5c8049c76f2be72.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/19/76/197605aec5741ec2b504b8aff5c8049c76f2be72.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/e5/55/e5552e9a6e6bed8d01cca0d951d1076fcc8e14f5.jpg?imwidth=564"
+      ]
     },
     {
       "id": 12,
       "title": "Loose Fit Baseball Jacket",
       "price": 74,
       "cat_prefix": "men",
+      "subcategory": "out-wear",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/49/92/4992a17379eecce5b69b4ac4233e263830a163b4.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/49/92/4992a17379eecce5b69b4ac4233e263830a163b4.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/a2/c4/a2c46d4563bdb5b52422d5c0a08ad8b71b1dfdd4.jpg?imwidth=2160"
+      ]
     },
     {
       "id": 13,
       "title": "Loose Fit Hoodie",
       "price": 24,
       "cat_prefix": "men",
+      "subcategory": "t-shirts-tops",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/5a/fa/5afaa4e2ce3da2d273b2c8952ee6a23c163001dd.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/5a/fa/5afaa4e2ce3da2d273b2c8952ee6a23c163001dd.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/e1/a2/e1a2bad441ee036fadf334c56c6ea5355e9c8c7f.jpg?imwidth=564"
+      ]
     },
     {
       "id": 14,
       "title": "Twill Jacket with Collar",
       "price": 45,
       "cat_prefix": "women",
+      "subcategory": "out-wear",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/13/92/139246ccd6567fab9582ae63da89aa662026e661.jpg?imwidth=1260"
+      "img": [
+        "https://image.hm.com/assets/hm/13/92/139246ccd6567fab9582ae63da89aa662026e661.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/68/a5/68a59cb0280177c13ed2e13d96b7250f0dfac7e3.jpg?imwidth=384"
+      ]
     },
     {
       "id": 15,
@@ -161,38 +287,55 @@
       "title": "Tie-Detail Cotton Dress",
       "price": 29,
       "cat_prefix": "women",
+      "subcategory": "dresses",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/17/aa/17aa15cba9a0d4d4d19106f190197dd477a444a7.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/17/aa/17aa15cba9a0d4d4d19106f190197dd477a444a7.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/aa/f0/aaf0b3cf29e0bfb1679004af383b8488592be796.jpg?imwidth=564"
+      ]
     },
     {
       "id": 17,
       "title": "Long Puff-Sleeved Dress",
       "price": 34,
       "cat_prefix": "women",
+      "subcategory": "dresses",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/30/52/30523cf9c757bc34748dbf6a803ca6f3f6415105.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/30/52/30523cf9c757bc34748dbf6a803ca6f3f6415105.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/08/96/089607443ce5562e96ff1e45d8b6ffb7aca84bef.jpg?imwidth=564"
+      ]
     },
     {
       "id": 18,
       "title": "Cotton Dress",
       "price": 44,
       "cat_prefix": "women",
+      "subcategory": "dresses",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/aa/c5/aac586dc60e2649306cbf93f5c7c69058823900e.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/aa/c5/aac586dc60e2649306cbf93f5c7c69058823900e.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/35/db/35db75b0ebbc64f6f3eb0ed9d9299d0db3f32dc2.jpg?imwidth=564"
+      ]
     },
     {
       "id": 19,
       "title": "Flounced Chiffon Dress",
       "price": 39,
       "cat_prefix": "women",
+      "subcategory": "dresses",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/da/54/da54b0da83d48432f2955a538cb59d8ced155ac6.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/da/54/da54b0da83d48432f2955a538cb59d8ced155ac6.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/5f/eb/5febee19ffc47b87d0a591706ab9189c6edb9590.jpg?imwidth=384"
+      ]
     },
     {
       "id": 20,
       "title": "Printed T-shirt",
       "price": 4,
       "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/22/88/228852d3acb95750c71639d99063b01e9d11acac.jpg?imwidth=564"
     },
@@ -201,6 +344,7 @@
       "title": "Printed Cotton T-shirt",
       "price": 6,
       "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/e0/17/e0172f42c086e4379f49584d4752d9ece2bee166.jpg?imwidth=564"
     },
@@ -209,6 +353,7 @@
       "title": "Printed Jersey Top",
       "price": 4,
       "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/ce/42/ce42249a8d7cd4e633bb0e30be707dbac0b79009.jpg?imwidth=564"
     },
@@ -217,6 +362,7 @@
       "title": "Hoodie with Printed Motif",
       "price": 29,
       "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/bb/ff/bbff82c9236ce6af8cb8c3c1a365b308a282dc62.jpg?imwidth=564"
     },
@@ -225,6 +371,7 @@
       "title": "Printed Windbreaker",
       "price": 29,
       "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/4a/65/4a65cab051e7ad9a1f9fa775846750be48eaac52.jpg?imwidth=564"
     },
@@ -233,6 +380,7 @@
       "title": "Denim Jacket",
       "price": 24,
       "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/ff/06/ff0606fe1ccb62c16342fff4e892276953292be5.jpg?imwidth=564"
     },
@@ -241,6 +389,7 @@
       "title": "2-piece Printed Sweatsuit",
       "price": 39,
       "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/9f/08/9f083505c53e74afc9aa548511d062891514c7f3.jpg?imwidth=564"
     },
@@ -248,7 +397,7 @@
       "id": 27,
       "title": "3-pack Sleeveless Bodysuits",
       "price": 12,
-      "cat_prefix": "bbay",
+      "cat_prefix": "newborn",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/ed/c8/edc84ae70ebd89913b974b1579a83da616deaf97.jpg?imwidth=564"
     },
@@ -256,7 +405,8 @@
       "id": 28,
       "title": "2-piece Ribbed Cotton Set",
       "price": 12,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/15/f5/15f51c70e93a54ded7fed1668bd09b577e7c5066.jpg?imwidth=564"
     },
@@ -264,7 +414,8 @@
       "id": 29,
       "title": "Sweatshirt Dress with Denim Skirt",
       "price": 14,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/db/3d/db3dfeaa7c385553958a5c73c5618149077c36ad.jpg?imwidth=564"
     },
@@ -272,7 +423,7 @@
       "id": 30,
       "title": "4-pack Socks",
       "price": 8,
-      "cat_prefix": "baby",
+      "cat_prefix": "newborn",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/1f/68/1f6887ba683faed4237de1212e87a056bd105468.jpg?imwidth=564"
     },
@@ -280,7 +431,8 @@
       "id": 31,
       "title": "2-pack Cotton Shorts",
       "price": 12,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/b5/4c/b54cc7bac63c767ee2cb52c3b4d1dafa3598ef43.jpg?imwidth=564"
     },
@@ -288,7 +440,8 @@
       "id": 32,
       "title": "2-pack Cotton T-Shirts",
       "price": 9,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/db/1f/db1ffa881d08c01a6fd1ea757956739fd26449c9.jpg?imwidth=564"
     },
@@ -296,7 +449,8 @@
       "id": 33,
       "title": "2-piece Sweatsuit",
       "price": 14,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "boys",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/7d/8f/7d8f4f6828f7f395199711335064d502c3bd62c4.jpg?imwidth=564"
     },
@@ -304,7 +458,8 @@
       "id": 34,
       "title": "2-piece Knit Cotton Set",
       "price": 34,
-      "cat_prefix": "baby",
+      "cat_prefix": "kids",
+      "subcategory": "girls",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/49/cd/49cd38ee3e550b7d119235141d2bc2e966621b31.jpg?imwidth=564"
     },
@@ -312,47 +467,68 @@
       "id": 35,
       "title": "Biking Shorts with SoftMove™",
       "price": 17,
-      "cat_prefix": "sport",
+      "cat_prefix": "women",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/75/3c/753c727e12e4e6d500d79fcde526ab66673c8212.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/75/3c/753c727e12e4e6d500d79fcde526ab66673c8212.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/ca/86/ca86f131a6db9f24928b159033179e420d1a0fa1.jpg?imwidth=1260"
+      ]
     },
     {
       "id": 36,
-      "title": "3-Pack Sports Socks with DryMove™",
+      "title": "Cropped sports top with DryMove™",
       "price": 12,
-      "cat_prefix": "sport",
+      "cat_prefix": "women",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/ea/ab/eaab3212a7e3862a54b20047d147f790d700c96f.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/4b/9a/4b9a458df2001541b8ad95f33f017222a86e5d85.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/f1/71/f1717564f854976d188fc75cc98da16ddf5985cb.jpg?imwidth=564"
+      ]
     },
     {
       "id": 37,
       "title": "Sports Leggings with SoftMove™",
       "price": 34,
-      "cat_prefix": "sport",
+      "cat_prefix": "women",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/4e/99/4e99012f60ef50473ac2396e514910efdc20824e.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/4e/99/4e99012f60ef50473ac2396e514910efdc20824e.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/92/25/92255235c72402bde532fc75525c6fb8ba1eae34.jpg?imwidth=564"
+      ]
     },
     {
       "id": 38,
       "title": "Activewear Jacket with SoftMove™",
       "price": 34,
-      "cat_prefix": "sport",
+      "cat_prefix": "women",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/53/5a/535a8566dd5e60bdc1d32dc4058c4006d57b03d5.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/53/5a/535a8566dd5e60bdc1d32dc4058c4006d57b03d5.jpg?imwidth=564",
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1732722712-h-m-move-black-friday-sale-jacket-67473e5e8f89b.png?crop=1xw:1xh;center,top&resize=980:*"
+      ]
     },
     {
       "id": 39,
       "title": "Regular Fit Sports Cargo Joggers",
       "price": 44,
-      "cat_prefix": "sport",
+      "cat_prefix": "men",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/b9/7f/b97f453dd692ef438bbdd031a7c4807c2eaac575.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/b9/7f/b97f453dd692ef438bbdd031a7c4807c2eaac575.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/a9/d4/a9d4fb93f0d37747534cff7fb88ec0a3f6d0267f.jpg?imwidth=564"
+      ]
     },
     {
       "id": 40,
       "title": "2-Pack Sports Shorts with DryMove™",
       "price": 29,
-      "cat_prefix": "sport",
+      "cat_prefix": "men",
+      "subcategory": "sport",
       "max": 4,
       "img": "https://image.hm.com/assets/hm/52/00/5200ccc262d65fd3531932b36a91bef681d4fee8.jpg?imwidth=564"
     },
@@ -360,76 +536,24 @@
       "id": 41,
       "title": "Regular-Fit Sports Tank Top with DryMove™",
       "price": 9,
-      "cat_prefix": "sport",
+      "cat_prefix": "men",
+      "subcategory": "sport",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/97/19/971903aeb06c69ab18b86857b8df9eb87f547886.jpg?imwidth=564"
+      ]
     }
   ],
-  "cart": [
-    {
-      "userId": 1,
-      "items": {
-        "2": 1,
-        "3": 1
-      },
-      "id": 1
-    }
-  ],
+  "cart": [],
   "wishlist": [
     {
       "userId": 1,
-      "productId": 2,
-      "id": 1
-    },
-    {
-      "userId": 1,
       "productId": 3,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "productId": 5,
-      "id": 3
-    }
-  ],
-  "orders": [
-    {
-      "userId": 1,
-      "items": [
-        {
-          "id": 1,
-          "title": "Regular Fit Jersey top",
-          "price": 9.99,
-          "cat_prefix": "men",
-          "max": 4,
-          "img": "https://image.hm.com/assets/hm/54/bc/54bc0275dcbbea83d05bc15f290ab4a59f9e78c5.jpg?imwidth=1260",
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "title": "Loose Fit Utility Jacket",
-          "price": 59.5,
-          "cat_prefix": "men",
-          "max": 3,
-          "img": "https://image.hm.com/assets/hm/90/66/906635eb840d4858885eaa4e67b5d3ae4eaf9664.jpg?imwidth=1536",
-          "quantity": 1
-        }
-      ],
-      "subTotal": 74.49,
-      "shippingInfo": {
-        "fullName": "Maria Alam",
-        "address": "baghdad",
-        "city": "damascus",
-        "country": "Syria",
-        "zipCode": "123456"
-      },
-      "paymentMethod": "paypal",
-      "shippingOption": "standard",
-      "cardDetails": null,
-      "date": "2025-04-03T08:37:27.391Z",
       "id": 1
     }
   ],
+  "orders": [],
   "reviews": [
     {
       "userId": 1,

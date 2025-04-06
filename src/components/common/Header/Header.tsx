@@ -58,7 +58,7 @@ export default function Header() {
                                     <NavDropdown title={dropdownTitle} id="basic-nav-dropdown">
                                         {records.map((cat)=> <NavDropdown.Item key={cat.id} end as={NavLink} to={`/categories/products/${cat.prefix}`}>{cat.title}</NavDropdown.Item> )}
                                     </NavDropdown>
-                                <Nav.Link as={NavLink} to="/about">About us</Nav.Link>
+                                <Nav.Link as={NavLink} to="/about">About</Nav.Link>
                             </Nav>
                             <Nav>
                                 {accessToken ? (

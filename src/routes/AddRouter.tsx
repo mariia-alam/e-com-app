@@ -43,7 +43,7 @@ const router = createBrowserRouter([{
             element: <PageSuspense><Home/></PageSuspense>
         },
         {
-            path:"categories/products/:prefix",
+            path:"categories/products/:prefix/:subcategory?",
             element: <PageSuspense><Products/></PageSuspense>,
             loader: async({params})=>{
                 if(

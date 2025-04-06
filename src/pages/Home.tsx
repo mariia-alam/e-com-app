@@ -271,7 +271,7 @@ export default function Home() {
 
 
   <motion.div
-      className="mb-5"
+      className="mt-5"
       initial={{ opacity: 0, scaleX: 0 }}
       whileInView={{ opacity: 1, scaleX: 1 }}
       transition={{ duration: 2, ease: "backOut" }}
@@ -302,7 +302,6 @@ export default function Home() {
 
 {/* footer */}
   <motion.div
-  className="mt-5"
     initial={{ opacity: 0, y: 100 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, ease:"easeInOut" }}

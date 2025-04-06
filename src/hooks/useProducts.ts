@@ -12,6 +12,7 @@ export default function useProducts() {
 
     const cartItems = useAppSelector((state)=> state.cart.items);
     const { loading, error, records } = useAppSelector(state => state.products);
+    const { records:categoriesRecords } = useAppSelector(state => state.categories);
     const  wishListItemsId  = useAppSelector(state => state.wishlist.itemsId);
 
     const userAccessToken = useAppSelector(state => state.auth.accessToken)
@@ -26,32 +27,14 @@ export default function useProducts() {
 
 useEffect(() => {
     if (!prefix) return;
-
-    console.log("Fetching products for prefix:", params?.prefix);
     const promise = dispatch(actGetProductsByPrefix(params?.prefix as string));
-
     return () => {
-        console.log("Cleaning up products...");
         promise.abort();
         dispatch(productCleanup());
     };
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [dispatch]);
+}, [dispatch, prefix]);
 
 
-
-//         useEffect(() => {
-//                 console.log("Fetching products for prefix:", params.prefix);
-
-//     const promise = dispatch(actGetProductsByPrefix(params.prefix as string));
-
-//     return () => {
-//         promise.abort();
-//         dispatch(productCleanup());
-//     };
-// // eslint-disable-next-line react-hooks/exhaustive-deps
-// }, [dispatch]);
-
-
-    return {loading, error , prefix , productsFullInfo , records}
+    return {loading, error , prefix , productsFullInfo , categoriesRecords}
 }

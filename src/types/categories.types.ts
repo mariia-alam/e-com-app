@@ -1,6 +1,11 @@
+type Subcategory = {
+    id: number;
+    title: string;
+    prefix: string;
+};
 export type Tcategory= {
-    id?: number ,
+    id: number ,
     title: string ,
     prefix: string,
-    img: string
+    subcategories?:Subcategory[],
 };

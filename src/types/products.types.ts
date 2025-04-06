@@ -8,4 +8,5 @@ export type Tproducts= {
     max?:number;
     isLiked?: boolean;
     isAuthenticated?:boolean;
+    subcategory?:string;
 };

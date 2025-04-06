@@ -1,6 +1,7 @@
 import { LottieHandler } from "@components/feedback";
 import { Row, Col, Container } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
+import { memo } from "react";
 
 type GridListProps<T> = {
     records: T[];
@@ -26,7 +27,7 @@ const GridList = <T extends HasID>({ records, renderItem, emptyMessage }: GridLi
                     <AnimatePresence mode="popLayout">
                         {records.length > 0 ? (
                             records.map((record) => (
-                                <Col key={record.id} xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
+                                <Col key={record.id} xs={12} sm={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
                                     <motion.div
                                         key={record.id}
                                         layout="position"
@@ -48,4 +49,4 @@ const GridList = <T extends HasID>({ records, renderItem, emptyMessage }: GridLi
     );
 };
 
-export default GridList;
+export default memo(GridList) as typeof GridList;

@@ -3,17 +3,17 @@ import actGetProductsByPrefix, { actGetProducts } from "./act/actGetProductsByCa
 import { Tloading, Tproducts } from "@customtypes";
 
 interface IproductsState {
-records: Tproducts[];
-homeProducts : Tproducts[];
-loading: Tloading;
-error:string | null
+    records: Tproducts[];
+    allProducts : Tproducts[];
+    loading: Tloading;
+    error:string | null
 }
 
 const initialState: IproductsState = {
-records:[],
-homeProducts:[],
-loading: "idle",
-error: null,
+    records:[],
+    allProducts:[],
+    loading: "idle",
+    error: null,
 }
 const productsSlice = createSlice({
     name:'products',
@@ -38,7 +38,6 @@ const productsSlice = createSlice({
             state.loading = "failed";
             if(action.payload && typeof action.payload === "string"){
             state.error = action.payload;
-            // state.error = action.payload as string; //another solution without if condition
             }
         });
         //get random products
@@ -48,7 +47,7 @@ const productsSlice = createSlice({
         });
         builder.addCase(actGetProducts.fulfilled, (state, action)=>{
             state.loading = "succeeded";
-            state.homeProducts = action.payload;
+            state.allProducts = action.payload;
         });
         builder.addCase(actGetProducts.rejected , (state, action)=>{
             state.loading = "failed";
@@ -58,6 +57,7 @@ const productsSlice = createSlice({
         });
     },
 })
+
 export const {productCleanup} = productsSlice.actions;
 export default productsSlice.reducer;
 export {actGetProductsByPrefix, actGetProducts}

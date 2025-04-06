@@ -97,7 +97,7 @@ return (
 
                 {/* Product Image */}
                 <div className={productImg}>
-                    <img src={img} alt={title} />
+                    <img loading="lazy" src={img} alt={title} />
                 </div>
                 {/* Product Details */}
                 <h2 title={title}>{title}</h2>
