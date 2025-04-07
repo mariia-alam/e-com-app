@@ -26,7 +26,7 @@ return (
     <Row className='mb-5'>
         <Col md={6}>
             <Carousel>
-                {[product?.img[0], product?.img[1]].map((img, idx) => (
+                {product?.img.map((img, idx) => (
                 <Carousel.Item key={idx}>
                     <img
                     className="d-block w-100"
@@ -89,7 +89,7 @@ return (
 
             <p>(maximum limit is {product?.max} pieces)</p>
             <div className='d-flex flex-row gap-2 w-50'>
-                <Button variant="outline-dark" className='w-75' onClick={handleAddToCart}>
+                <Button variant="outline-dark" className='w-50' onClick={handleAddToCart}>
                     Add to cart 🛒
                 </Button>
                 <Button onClick={()=>navigate(-1)} variant="dark">
