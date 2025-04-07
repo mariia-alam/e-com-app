@@ -97,7 +97,7 @@ return (
                 {/* Product Image */}
                 <div className={productImg}>
                     <NavLink   to={`/product/${id}`}  state={{ from: location.pathname }}>
-                    <img  loading="lazy" src={img} alt={title} />
+                    <img  loading="lazy" src={img[0]} alt={title} />
                     </NavLink>
                 </div>
                 {/* Product Details */}

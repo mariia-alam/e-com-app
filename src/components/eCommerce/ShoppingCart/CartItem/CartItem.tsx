@@ -43,7 +43,7 @@ const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, ch
             className={cartItem} variants={productVariants}
             >
             <div className={product}>
-                    <LazyImage src={img} alt={title} />
+                    <LazyImage src={img[0]} alt={title} />
                     <div className={productInfo}>
                         <h2>{title}</h2>
                         <h3 className="fs-6">{cat_prefix} products</h3>

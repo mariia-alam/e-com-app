@@ -13,7 +13,7 @@ const OrderItems = memo( ({title , img, price , cat_prefix , quantity }: Tproduc
             <div className={product}>
                     <div className={productImg}>
                         <img
-                            src={img}
+                            src={img[0]}
                             alt={title}
                         />
                     </div>
