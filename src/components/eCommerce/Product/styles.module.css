@@ -1,6 +1,6 @@
 .product {
-  width: 150px;
-  height:350px;
+  width: 200px;
+  max-height:350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,8 +8,7 @@
 }
 
 .productImg {
-  height: 190px;
-  background-color: var(--gray-color);
+  height: 250px;
 }
 .productImg img {
   height: 100%;
@@ -24,11 +23,7 @@
 }
 
 .product h3 {
-  font-size: 13px;
-}
-.customButton{
-    color: white !important;
-    background-color: var(--background-color) !important;
+  font-size: 12px;
 }
 .wishListBtn {
   position: absolute;

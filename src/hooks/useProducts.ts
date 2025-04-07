@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "@store/hooks";
-import { actGetProductsByPrefix, productCleanup } from "@store/products/productsSlice";
+import { actGetProductsByPrefix, productsCleanup } from "@store/products/productsSlice";
 import { useEffect  } from "react";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +30,7 @@ useEffect(() => {
     const promise = dispatch(actGetProductsByPrefix(params?.prefix as string));
     return () => {
         promise.abort();
-        dispatch(productCleanup());
+        dispatch(productsCleanup());
     };
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [dispatch, prefix]);

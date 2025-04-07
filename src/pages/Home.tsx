@@ -121,7 +121,7 @@ export default function Home() {
                 variant="light"
                 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)" }}
                 size="lg"
-                onClick={() => navigate("/categories")}
+                // onClick={() => navigate("/categories")}
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               >
@@ -175,8 +175,8 @@ export default function Home() {
   whileInView={{ opacity: 1, scaleX: 1 }}
   transition={{ duration: 1, ease: "easeOut" }}
 >
-  <Row className="py-5 mb-5 w-75 m-auto">
-    <Col md={12}>
+  <Row className="py-5 mb-5 m-auto">
+    <Col md={9} sm={12} className="mx-auto">
       <h2 className="fw-bold text-center mb-4" style={{ color: '#2c3e50' }}>
         Frequently Asked Questions
       </h2>

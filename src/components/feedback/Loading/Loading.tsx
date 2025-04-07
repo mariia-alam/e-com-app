@@ -3,6 +3,7 @@ import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
 import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
 import {LottieHandler} from "@components/feedback"
 import OrderSkeleton from "../skeletons/OrderSkeleton/OrderSkeleton";
+import { Container } from "react-bootstrap";
 interface LoadingProps {
   status: Tloading;
   error: null | string;
@@ -19,7 +20,7 @@ export default function Loading( { status , error, children, type="product" }: L
   const  Component = skeletonsType[type];
 
   if(status === 'pending'){
-      return <Component/>
+      return <Container> <Component/> </Container>
     }
   if(status === 'failed' || error ){
     return(

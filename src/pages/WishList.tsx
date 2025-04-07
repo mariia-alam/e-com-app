@@ -1,10 +1,10 @@
 import { Loading, LottieHandler } from "@components/feedback";
 import {GridList} from "@components/common";
-import { Product } from "@components/eCommerce";
 import { Tproducts } from "@customtypes";
 import useWishList from "@hooks/useWishList";
 import { AnimatePresence, motion } from "framer-motion";
 import { Container } from "react-bootstrap";
+import {Product} from "@components/eCommerce";
 
 export default function WishList() {
         const {loading , error , products , productsFullInfo} = useWishList();

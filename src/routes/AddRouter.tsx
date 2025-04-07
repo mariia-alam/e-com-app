@@ -15,6 +15,7 @@ const Register = lazy(()=> import("@pages/Register"))
 const WishList = lazy(()=> import("@pages/WishList"))
 const Account = lazy(()=> import("@pages/Account"))
 const Orders = lazy(()=> import("@pages/Orders"))
+const ProductDetails = lazy(() => import("@pages/ProductDetails"))
 
 //suspense
 import {PageSuspense} from '@components/feedback';
@@ -58,6 +59,19 @@ const router = createBrowserRouter([{
                 return true;
             }
         },
+        {
+            path: "product/:id",
+            element: <PageSuspense><ProductDetails/></PageSuspense>,
+            loader: async ({ params }) => {
+                if (!params.id || isNaN(Number(params.id))) {
+                throw new Response("Invalid product ID", {
+                    statusText: "Product not found",
+                    status: 400,
+                });
+                }
+                return true;
+            }
+            },
         {
             path:"about",
             element:<PageSuspense><About/></PageSuspense>

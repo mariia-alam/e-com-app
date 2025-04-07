@@ -1,4 +1,4 @@
-import { Row, Col, Card} from "react-bootstrap";
+import { Row, Col, Card, Container} from "react-bootstrap";
 import { motion } from "framer-motion";
 import {  FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import {Reviews} from "../components/common";
@@ -27,7 +27,6 @@ const About = () => {
 
   return (
     <div className="overflow-hidden mt-5">
-      <div className="w-75 m-auto">
       <motion.div
       className="text-center mb-5 w-75 m-auto"
         initial={{ opacity: 0, y: 50 }}
@@ -41,8 +40,9 @@ const About = () => {
       </motion.div>
 
 
-      {/* Story & Vision */}
-    <Row className="mb-5">
+{/* Story & Vision */}
+    <Container>
+      <Row className="mb-5">
           <InfoCard
             title="Our Story"
             text="Our journey started with a simple dream: to offer elegant and practical fashion with exceptional quality. Since then, we've been committed to providing the best products to our customers."
@@ -53,7 +53,8 @@ const About = () => {
           text="We aspire to be the leading fashion brand, offering innovative products that cater to our customers' needs."
           motionProps={{ initial: { opacity: 0, x: 200 }, whileInView: { opacity: 1, x: 0 }, transition: { duration: 1, ease: "easeOut"} }}
         />
-    </Row>
+      </Row>
+    </Container>
 
 {/* Quality & Materials */}
       <motion.div
@@ -67,6 +68,7 @@ const About = () => {
       </motion.div>
 
 {/* Shipping & Customer Service */}
+    <Container>
       <Row className="mb-5">
         <InfoCard
         title="Fast Shipping"
@@ -80,21 +82,23 @@ const About = () => {
         motionProps={{ initial: { opacity: 0, x: 200 }, whileInView: { opacity: 1, x: 0 }, transition: { duration: 1, ease: "easeOut" } }}
         />
       </Row>
+    </Container>
 
 {/* reviews and rating */}
-    <motion.div
-    initial= {{ opacity: 0,y: 100 }}
-    whileInView= {{ opacity: 1, y: 0 }}
-    transition= {{ duration: 1, ease: "easeOut"}}
-    className="text-center mb-5">
-      <Reviews/>
-    </motion.div>
-</div>
+  <Container>
+      <motion.div
+      initial= {{ opacity: 0,y: 100 }}
+      whileInView= {{ opacity: 1, y: 0 }}
+      transition= {{ duration: 1, ease: "easeOut"}}
+      className="text-center mb-5">
+        <Reviews/>
+      </motion.div>
+  </Container>
 
       {/* Contact Us */}
       <motion.div
-      style={{backgroundColor:"var(--accent-color)"}}
-        className="text-center mt-5 rounded-1 py-3 text-white"
+        style={{backgroundColor:"var(--accent-color)"}}
+        className="text-center mt-5 py-3 text-white"
         initial={{ opacity: 0 , y: 100 }}
         whileInView={{ opacity: 1, y:0 }}
         transition={{ duration: 1, ease: "easeOut" }}

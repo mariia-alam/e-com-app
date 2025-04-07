@@ -24,13 +24,12 @@ const GridList = <T extends HasID>({ records, renderItem, emptyMessage }: GridLi
         <Container className="my-5">
             <motion.div layout variants={containerVariants} initial="hidden" animate="visible">
                 <Row>
-                    <AnimatePresence mode="popLayout">
+                    <AnimatePresence mode="sync">
                         {records.length > 0 ? (
                             records.map((record) => (
-                                <Col key={record.id} xs={12} sm={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
+                                <Col key={record.id} xs={12} sm={6} md={4} lg={3}  className="d-flex justify-content-center mb-5 mt-2">
                                     <motion.div
                                         key={record.id}
-                                        layout="position"
                                         exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.4, ease: "easeInOut" } }}
                                     >
                                         {renderItem(record)}

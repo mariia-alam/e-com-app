@@ -279,8 +279,12 @@
       "title": "Brushed-Finish Tie-Belt Coat",
       "price": 69,
       "cat_prefix": "women",
+      "subcategory": "out-wear",
       "max": 4,
-      "img": "https://image.hm.com/assets/hm/ea/03/ea035005f30852ad6e27bad1c3101e1103bf2f95.jpg?imwidth=564"
+      "img": [
+        "https://image.hm.com/assets/hm/ea/03/ea035005f30852ad6e27bad1c3101e1103bf2f95.jpg?imwidth=564",
+        "https://image.hm.com/assets/hm/68/a5/68a59cb0280177c13ed2e13d96b7250f0dfac7e3.jpg?imwidth=657"
+      ]
     },
     {
       "id": 16,
@@ -546,13 +550,7 @@
     }
   ],
   "cart": [],
-  "wishlist": [
-    {
-      "userId": 1,
-      "productId": 3,
-      "id": 1
-    }
-  ],
+  "wishlist": [],
   "orders": [],
   "reviews": [
     {
