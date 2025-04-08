@@ -14,7 +14,7 @@ export default function Home() {
           isSmallScreen,
           isMedScreen,
           token,
-          navigate
+          navigate,
         }  = useHome();
 
   return (
@@ -33,7 +33,7 @@ export default function Home() {
           width: "100%",
           height: `${isSmallScreen ? "47vh" : "85vh"}`,
           minHeight: "300px",
-          backgroundImage:`linear-gradient(rgba(210, 197, 197, 0.5), rgba(255, 126, 103, 0.8)),
+          backgroundImage:`linear-gradient(rgba(210, 197, 197, 0.5), rgba(255, 126, 103, 0.6)),
               url('/homeModels/model1.jpg'),
               url('/homeModels/model2.jpg'),
               url('/homeModels/model3.jpg')
@@ -51,8 +51,8 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <h1 className= {`${isSmallScreen ? "fs-2 fw-bold fst-italic": "fs-1 fw-bold fst-italic"}`} >🛍️ Welcome to Fashion Hub!</h1>
-          <p className={`${isSmallScreen ? "fs-5" : "fs-3"}`} >Discover the latest trends and shop your favorite styles today.</p>
+          <h1 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)" }} className= {`${isSmallScreen ? "fs-2 fw-bold fst-italic": "fs-1 fw-bold fst-italic"}`} >🛍️ Welcome to Fashion Hub!</h1>
+          <p style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)" }}  className={`${isSmallScreen ? "fs-5" : "fs-3"}`} >Discover the latest trends and shop your favorite styles today.</p>
           <div>
             {token ? (
               <MotionButton
@@ -84,28 +84,28 @@ export default function Home() {
     </motion.div>
 
 {/* image carousel */}
-
-{isSmallScreen ?
-  (<div className="py-4">
-        <h2 className="text-center fw-bold">Discover Our Latest Collection</h2>
-        <p className="text-center text-muted">Shop the newest exclusive products</p>
-      <ProductCarousel products={first10Men}  carouselHeight="40vh" imgHeight="35vh"/>
-        <h2 className="text-center mt-5 fw-bold">Weekly Deals</h2>
-        <p className="text-center text-muted">Get these discounts before they're gone!</p>
-      <ProductCarousel products={first10Women}  carouselHeight="40vh" imgHeight="35vh"/>
-  </div>
-    ):(
-      <div className="py-5 text-center">
-        <h2 className="fw-bold fs-1">Discover Our Latest Collection</h2>
-        <p className="text-muted fs-4">Shop the newest exclusive products</p>
-        <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
-        <HorizontalScroll prefix="men" products={first10Men} imgHeight="400px" ></HorizontalScroll>
-        <h2 className="mt-5 fw-bold fs-1">Weekly Deals</h2>
-        <p className=" text-muted mb-5 fs-4">Get these discounts before they're gone!</p>
-        <HorizontalScroll prefix="women" products={first10Women} imgHeight="400px"></HorizontalScroll>
-      </div>
-    )
-}
+  {isSmallScreen ?
+    (<div className="py-4 text-center">
+          <h2 className="fw-bold">Discover Our Latest Collection</h2>
+          <p className="text-muted">Shop the newest exclusive products</p>
+          <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
+        <ProductCarousel products={first10Men}  carouselHeight="40vh" imgHeight="35vh"/>
+          <h2 className="mt-5 fw-bold">Weekly Deals</h2>
+          <p className="text-muted">Get these discounts before they're gone!</p>
+        <ProductCarousel products={first10Women}  carouselHeight="40vh" imgHeight="35vh"/>
+    </div>
+      ):(
+        <div className="py-5 text-center">
+          <h2 className="fw-bold fs-1">Discover Our Latest Collection</h2>
+          <p className="text-muted fs-4">Shop the newest exclusive products</p>
+          <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
+          <HorizontalScroll prefix="men" products={first10Men} imgHeight="400px" ></HorizontalScroll>
+          <h2 className="mt-5 fw-bold fs-1">Weekly Deals</h2>
+          <p className=" text-muted mb-5 fs-4">Get these discounts before they're gone!</p>
+          <HorizontalScroll prefix="women" products={first10Women} imgHeight="400px"></HorizontalScroll>
+        </div>
+      )
+  }
 
 {/* Accordion */}
 
@@ -166,7 +166,7 @@ export default function Home() {
       height:"34vh",
       borderRadius: "20px",
       overflow: "hidden",
-      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)"
+      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)"
     }}
   >
     {/* background video */}

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useCallback } from "react";
 import { Tproducts } from "@customtypes";
 import { useNavigate } from "react-router-dom";
-
+import { useAppSelector } from "@store/hooks";
 type TCarouselProps = {
     carouselHeight: string;
     imgHeight: string;
@@ -12,6 +12,8 @@ type TCarouselProps = {
 
 const ProductCarousel = ({ carouselHeight, imgHeight, products }: TCarouselProps) => {
 
+    const {error} = useAppSelector(state=> state.products)
+    
     const navigate = useNavigate();
 
     const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLImageElement>) => {
@@ -23,6 +25,12 @@ const ProductCarousel = ({ carouselHeight, imgHeight, products }: TCarouselProps
         const originalSrc = e.currentTarget.getAttribute("data-original");
         if (originalSrc) e.currentTarget.src = originalSrc;
     }, []);
+
+    if(error) {
+    return(
+    <p className="text-danger">Can not load products. Something went wrong </p>
+    );
+}
 
     return (
         <motion.div

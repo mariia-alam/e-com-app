@@ -1,4 +1,5 @@
 import { Tproducts } from "@customtypes";
+import { useAppSelector } from "@store/hooks";
 import { motion } from "framer-motion";
 import { Button } from "react-bootstrap";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
@@ -11,6 +12,7 @@ type TScrollProps = {
 };
 
 const HorizontalScroll = ({ products, imgHeight, prefix }: TScrollProps) => {
+    const {error} = useAppSelector(state=> state.products)
     const navigate = useNavigate();
     const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement>) => {
         const hoverSrc = e.currentTarget.getAttribute("data-hover");
@@ -33,7 +35,11 @@ const HorizontalScroll = ({ products, imgHeight, prefix }: TScrollProps) => {
         if (originalSrc) e.currentTarget.src = originalSrc;
     };
 
-
+if(error) {
+    return(
+    <p className="text-danger">Can not load products. Something went wrong </p>
+    );
+}
     return (
         <div
         style={{

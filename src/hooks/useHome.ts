@@ -9,7 +9,7 @@ const useHome = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const allProducts = useAppSelector(state=>state.products.allProducts)
+    const {allProducts} = useAppSelector(state=>state.products)
     const token = useAppSelector(state => state.auth.accessToken);
 
     const menProducts = useMemo(() => allProducts.filter(product => product.cat_prefix === "men"), [allProducts]);
@@ -20,7 +20,7 @@ const useHome = () => {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const isSmallScreen = windowWidth <= 576;
-    const isMedScreen = windowWidth > 576 && windowWidth >= 768;
+    const isMedScreen = windowWidth > 576 && windowWidth <= 768;
 
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
@@ -40,7 +40,7 @@ const useHome = () => {
         isSmallScreen,
         isMedScreen,
         token,
-        navigate
+        navigate,
     }
 }
 
