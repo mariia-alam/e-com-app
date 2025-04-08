@@ -1,83 +1,21 @@
 import { Container, Row, Col, Accordion, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { Footer, MotionButton } from "@components/common";
-import {  useAppSelector } from "@store/hooks";
-import { useState, useEffect } from "react";
 import HorizontalScroll from "@components/common/Carousel/HorizontalScroll"
 import {ProductCarousel} from "@components/common";
 import { PersonFill, CartFill, HeartFill } from 'react-bootstrap-icons';
+import useHome from "@hooks/useHome";
 
-const carouseImages1 = [
-    "/carouselImages/product1.webp",
-    "/carouselImages/product2.webp",
-    "/carouselImages/product7.webp",
-
-    "/carouselImages/product8.webp",
-    "/carouselImages/product11.webp",
-    "/carouselImages/product15.webp",
-
-    "/carouselImages/product16.webp",
-    "/carouselImages/product17.webp",
-    "/carouselImages/product18.webp",
-];
-const carouseImages2 = [
-    "/carouselImages/product3.webp",
-    "/carouselImages/product4.webp",
-    "/carouselImages/product5.webp",
-
-    "/carouselImages/product6.webp",
-    "/carouselImages/product9.webp",
-    "/carouselImages/product10.webp",
-
-    "/carouselImages/product12.webp",
-    "/carouselImages/product13.webp",
-    "/carouselImages/product14.webp",
-];
-    const hoverImages1 = [
-    "/carouselImages/productHover1.webp",
-    "/carouselImages/productHover2.webp",
-    "/carouselImages/productHover7.webp",
-
-    "/carouselImages/productHover8.webp",
-    "/carouselImages/productHover11.webp",
-    "/carouselImages/productHover15.webp",
-
-    "/carouselImages/productHover16.webp",
-    "/carouselImages/productHover17.webp",
-    "/carouselImages/productHover18.webp",
-];
-    const hoverImages2 = [
-    "/carouselImages/productHover3.webp",
-    "/carouselImages/productHover4.webp",
-    "/carouselImages/productHover5.webp",
-
-    "/carouselImages/productHover6.webp",
-    "/carouselImages/productHover9.webp",
-    "/carouselImages/productHover10.webp",
-
-    "/carouselImages/productHover12.webp",
-    "/carouselImages/productHover13.webp",
-    "/carouselImages/productHover14.webp",
-];
 
 export default function Home() {
-
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 576);
-  const [isMedScreen, setIsMedScreen] = useState(window.innerWidth >= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 576);
-      setIsMedScreen(window.innerWidth >= 576 && window.innerWidth < 768);
-    };
-        window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const token = useAppSelector(state => state.auth.accessToken);
-
-  const navigate = useNavigate();
+  const {
+          first10Men,
+          first10Women,
+          isSmallScreen,
+          isMedScreen,
+          token,
+          navigate
+        }  = useHome();
 
   return (
     <Container  fluid className="p-0 d-flex flex-column overflow-hidden">
@@ -151,19 +89,20 @@ export default function Home() {
   (<div className="py-4">
         <h2 className="text-center fw-bold">Discover Our Latest Collection</h2>
         <p className="text-center text-muted">Shop the newest exclusive products</p>
-      <ProductCarousel images={carouseImages1} hoverImages={hoverImages1} carouselHeight="40vh" imgHeight="35vh" itemsNumber={1}/>
+      <ProductCarousel products={first10Men}  carouselHeight="40vh" imgHeight="35vh"/>
         <h2 className="text-center mt-5 fw-bold">Weekly Deals</h2>
         <p className="text-center text-muted">Get these discounts before they're gone!</p>
-      <ProductCarousel images={carouseImages2} hoverImages={hoverImages2} carouselHeight="40vh" imgHeight="35vh" itemsNumber={1}/>
+      <ProductCarousel products={first10Women}  carouselHeight="40vh" imgHeight="35vh"/>
   </div>
     ):(
-      <div className="py-5">
-        <h2 className="text-center fw-bold fs-1">Discover Our Latest Collection</h2>
-        <p className="text-center text-muted mb-5 fs-4">Shop the newest exclusive products</p>
-        <HorizontalScroll images={carouseImages1} imgHeight="400px" hoverImages={hoverImages1}></HorizontalScroll>
-        <h2 className="text-center mt-5 fw-bold fs-1">Weekly Deals</h2>
-        <p className="text-center text-muted mb-5 fs-4">Get these discounts before they're gone!</p>
-        <HorizontalScroll images={carouseImages2} imgHeight="400px" hoverImages={hoverImages2}></HorizontalScroll>
+      <div className="py-5 text-center">
+        <h2 className="fw-bold fs-1">Discover Our Latest Collection</h2>
+        <p className="text-muted fs-4">Shop the newest exclusive products</p>
+        <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
+        <HorizontalScroll prefix="men" products={first10Men} imgHeight="400px" ></HorizontalScroll>
+        <h2 className="mt-5 fw-bold fs-1">Weekly Deals</h2>
+        <p className=" text-muted mb-5 fs-4">Get these discounts before they're gone!</p>
+        <HorizontalScroll prefix="women" products={first10Women} imgHeight="400px"></HorizontalScroll>
       </div>
     )
 }

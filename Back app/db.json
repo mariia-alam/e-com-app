@@ -275,7 +275,7 @@
       "max": 4,
       "img": [
         "https://image.hm.com/assets/hm/13/92/139246ccd6567fab9582ae63da89aa662026e661.jpg?imwidth=1260",
-        "https://image.hm.com/assets/hm/68/a5/68a59cb0280177c13ed2e13d96b7250f0dfac7e3.jpg?imwidth=384"
+        "https://image.hm.com/assets/hm/09/c3/09c3d720bac99360d715374437ebdcd4d662cc5c.jpg?imwidth=1260"
       ]
     },
     {
@@ -583,24 +583,70 @@
         "https://image.hm.com/assets/hm/a8/83/a88324c40abb5445636dcf6dfcb5495d31a79599.jpg?imwidth=564",
         "https://image.hm.com/assets/hm/97/19/971903aeb06c69ab18b86857b8df9eb87f547886.jpg?imwidth=564"
       ]
-    }
-  ],
-  "cart": [
+    },
     {
-      "userId": 1,
-      "items": {
-        "1": 1
-      },
-      "id": 1
-    }
-  ],
-  "wishlist": [
+      "id": 42,
+      "title": "Wijde jeans",
+      "price": 29,
+      "cat_prefix": "women",
+      "subcategory": "denim-pants",
+      "max": 3,
+      "img": [
+        "https://image.hm.com/assets/hm/4e/c9/4ec98ca03cc86f292542146cafa15f65f39cdaf7.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/dd/c6/ddc621f7df1911bfa3bbb4dc6c2410c2731bdea6.jpg?imwidth=1260"
+      ]
+    },
     {
-      "userId": 1,
-      "productId": 5,
-      "id": 1
+      "id": 43,
+      "title": "Regular-Fit Textured Resort Shirt",
+      "price": 34.99,
+      "cat_prefix": "men",
+      "subcategory": "t-shirts-tops",
+      "max": 3,
+      "img": [
+        "https://image.hm.com/assets/hm/16/d5/16d551f7d3b9b7d6b0c64b1f489b4de9f256fa14.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/ad/59/ad5945b933287d852189e1b39d465a2ea7772ef1.jpg?imwidth=1260"
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Cropped overslagtop",
+      "price": 19,
+      "cat_prefix": "women",
+      "subcategory": "t-shirts-tops",
+      "max": 3,
+      "img": [
+        "https://image.hm.com/assets/hm/b0/82/b08251de6183ba5f4be7db49474232170f3f6e5f.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/c1/f3/c1f3dae1d49f0d68f41b2fc9e41b2d7c15d19c2d.jpg?imwidth=1260"
+      ]
+    },
+    {
+      "id": 45,
+      "title": "Slim-Fit Linen Jacket",
+      "price": 109,
+      "cat_prefix": "men",
+      "subcategory": "formal-wear",
+      "max": 3,
+      "img": [
+        "https://image.hm.com/assets/hm/6a/db/6adbc168eff96cb18acddccd0b43d8f9002a0f0d.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/2c/5a/2c5a37608d654b7a6233a5a09a8dc81ff8d93039.jpg?imwidth=1260"
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Slim Fit Suit Pants",
+      "price": 49,
+      "cat_prefix": "men",
+      "subcategory": "denim-pants",
+      "max": 3,
+      "img": [
+        "https://image.hm.com/assets/hm/5b/f9/5bf9197fd13ada1508fa158c644706e00950545a.jpg?imwidth=1260",
+        "https://image.hm.com/assets/hm/11/95/11957f2580e9b20fdeb611bc248dc863304719f8.jpg?imwidth=1260"
+      ]
     }
   ],
+  "cart": [],
+  "wishlist": [],
   "orders": [],
   "reviews": [
     {

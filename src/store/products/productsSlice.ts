@@ -33,6 +33,11 @@ const productsSlice = createSlice({
             state.loading= "idle";
             state.error= null;
         },
+        allProductsCleanup: (state)=>{
+            state.allProducts =[];
+            state.loading= "idle";
+            state.error= null;
+        },
     },
     extraReducers:(builder)=>{
         builder.addCase(actGetProductsByPrefix.pending, (state)=>{
@@ -84,6 +89,6 @@ const productsSlice = createSlice({
     },
 })
 
-export const {productsCleanup , productCleanup} = productsSlice.actions;
+export const {productsCleanup , productCleanup, allProductsCleanup} = productsSlice.actions;
 export default productsSlice.reducer;
 export {actGetProductsByPrefix, actGetProducts}

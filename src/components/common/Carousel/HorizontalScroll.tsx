@@ -1,15 +1,17 @@
+import { Tproducts } from "@customtypes";
 import { motion } from "framer-motion";
 import { Button } from "react-bootstrap";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 type TScrollProps = {
-    images: string[];
-    hoverImages: string[];
+    products: Tproducts[];
     imgHeight: string;
+    prefix:string;
 };
 
-const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
-
+const HorizontalScroll = ({ products, imgHeight, prefix }: TScrollProps) => {
+    const navigate = useNavigate();
     const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement>) => {
         const hoverSrc = e.currentTarget.getAttribute("data-hover");
         if (hoverSrc) e.currentTarget.src = hoverSrc;
@@ -22,12 +24,12 @@ const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
 
       //impact of touch on mobile
     const handleTouchStart = (e: React.TouchEvent<HTMLImageElement>, index: number) => {
-        const hoverSrc = hoverImages[index];
+        const hoverSrc = products[index].img[1];
         if (hoverSrc) e.currentTarget.src = hoverSrc;
     };
 
     const handleTouchEnd = (e: React.TouchEvent<HTMLImageElement>, index: number) => {
-        const originalSrc = images[index];
+        const originalSrc = products[index].img[0];
         if (originalSrc) e.currentTarget.src = originalSrc;
     };
 
@@ -47,7 +49,7 @@ const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
             transition={{ duration: 1, ease: "easeInOut" }}
 
             drag="x"
-            dragConstraints={{ left: -((images.length - 3) * 400), right: 0 }}
+            dragConstraints={{ left: -((products.length - 3) * 400), right: 0 }}
             style={{
             display: "flex",
             justifyContent:"center",
@@ -57,7 +59,7 @@ const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
             width: "max-content",
             }}
         >
-            {images.map((image, index) => (
+            {products.map((item, index) => (
             <motion.div
                 key={index}
                 style={{
@@ -74,10 +76,11 @@ const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
                     zIndex: 10,
                 }}
                 >
-                    <p className="text-decoration-underline text-primary fw-medium">$30</p>
+                    <p className="text-decoration-underline text-primary fw-medium">${item.price.toFixed(2)}</p>
                 </div>
+
                 <img
-                src={image}
+                src={item.img[0]}
                 alt={`Product ${index}`}
                 loading="lazy"
                 className="img-fluid"
@@ -86,17 +89,18 @@ const HorizontalScroll = ({ images, hoverImages, imgHeight }: TScrollProps) => {
                     width: "100%",
                     objectFit: "cover",
                 }}
-                data-original={image} //store origin image
-                data-hover={hoverImages[index] || image} //store hover image
+                data-original={item.img[0]}
+                data-hover={item.img[1] || item.img[0]}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                onTouchStart={(e) => handleTouchStart(e, index)} //onTouch in mobile
-                onTouchEnd={(e) => handleTouchEnd(e, index)} // OnTouch end
-                // onDoubleClick={() => navigate(`/product/${productId}`)}
+                onTouchStart={(e) => handleTouchStart(e, index)}
+                onTouchEnd={(e) => handleTouchEnd(e, index)}
+                onDoubleClick={()=>navigate(`/product/${item.id}`)}
                 />
             </motion.div>
             ))}
             <Button
+            onClick={()=>navigate(`categories/products/${prefix}`)}
                 style={{ marginLeft: "20px" }}
                 variant="outline-dark"
                 className="flex items-center gap-2"
