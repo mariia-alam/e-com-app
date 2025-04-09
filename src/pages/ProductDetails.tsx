@@ -1,7 +1,8 @@
 import useProductDetails from '@hooks/useProductDetails';
 import { Container, Row, Col, Carousel, Form, Button,ListGroup, Card } from 'react-bootstrap';
+import { LikeButton } from '@components/eCommerce';
 import { LoginModal } from '@components/common';
-
+import AddToCartButton from '@components/eCommerce/ShoppingCart/AddToCartButton/AddToCartButton';
 export default function ProductDetails() {
     const {
         navigate,
@@ -18,24 +19,28 @@ export default function ProductDetails() {
         colors,
         sizes,
         handleAddComment,
-        addToCartHandler,
         showModal,
         setShowModal,
         displayedReviews,
-        addLoading,
         quantityReachedToMax,
         currentRemainingQuantity
     } = useProductDetails();
 
 return (
 <Container className="my-5">
-    <LoginModal onClose={()=> setShowModal(false)} show={showModal}/>
+    <LoginModal
+        title='Login Required'
+        body='You must be logged in to leave a comment'
+        onClose={()=> setShowModal(false)}
+        show={showModal}
+    />
 
     <Row className='mb-5'>
         <Col md={6}>
             <Carousel interval={null} data-bs-theme="dark" indicators={true} >
-                {productFullInfo.img?.map((img, idx) => (
+                {productFullInfo && productFullInfo.img?.map((img, idx) => (
                 <Carousel.Item key={idx}>
+                    <LikeButton product={productFullInfo}/>
                     <img
                     className="d-block w-100"
                     src={img}
@@ -48,7 +53,7 @@ return (
 
         <Col md={6} className="ps-md-5 mt-4 mt-md-1">
             <h2>{productFullInfo?.title}</h2>
-            <h4 className="text-muted">${productFullInfo.price?.toFixed(2)}</h4>
+            <h4 className="text-muted">${productFullInfo?.price?.toFixed(2)}</h4>
 
             <Form className="mt-4">
             <Form.Group className="mb-3">
@@ -97,12 +102,11 @@ return (
 
             {quantityReachedToMax ? <p className="text-danger">maximum limit Reached</p> : <p>You can add {currentRemainingQuantity} items</p>}
             <div className='d-flex flex-row gap-2 w-100'>
-                <Button
-                    disabled={addLoading || quantityReachedToMax}
-                    variant="outline-dark"
-                    onClick={addToCartHandler}>
-                    Add to cart 🛒
-                </Button>
+                <AddToCartButton
+                    productId={productFullInfo?.id || 0}
+                    isAuthenticated={productFullInfo?.isAuthenticated || false}
+                    isDisabled={quantityReachedToMax}
+                />
                 <Button onClick={()=>navigate(-1)} variant="dark">
                     Back
                 </Button>

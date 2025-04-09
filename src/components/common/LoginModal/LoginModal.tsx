@@ -3,19 +3,21 @@ import { Modal, Button } from "react-bootstrap";
 type TModalProps = {
     show: boolean;
     onClose: () => void;
+    title:string;
+    body:string;
 }
 
-const CustomModal = ({show, onClose}:TModalProps) => {
+const LoginModal = ({show, onClose, title, body}:TModalProps) => {
 
 
     return(
         <Modal  centered show={show} onHide={onClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Login Required</Modal.Title>
+            <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-            <p>If you want to continue, please log in</p>
+            <p>{body}</p>
             </Modal.Body>
 
             <Modal.Footer>
@@ -24,4 +26,4 @@ const CustomModal = ({show, onClose}:TModalProps) => {
         </Modal>
     );
 }
-export default CustomModal
+export default LoginModal

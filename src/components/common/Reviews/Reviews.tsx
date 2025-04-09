@@ -74,7 +74,12 @@ useEffect(() => {
 
 return(
     <>
-    <LoginModal onClose={()=> setShowModal(false)} show={showModal}/>
+    <LoginModal
+        title="Login Required"
+        body='You must be logged in to leave a review'
+        onClose={()=> setShowModal(false)}
+        show={showModal}
+    />
 
     <h2>What Our Customers Say</h2>
     {reviews.length > 0 ? memoizedReviews : (

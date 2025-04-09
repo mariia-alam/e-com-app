@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "react-bootstrap";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import {LikeButton} from "@components/eCommerce";
 
 type TScrollProps = {
     products: Tproducts[];
@@ -12,6 +13,8 @@ type TScrollProps = {
 };
 
 const HorizontalScroll = ({ products, imgHeight, prefix }: TScrollProps) => {
+
+
     const {error} = useAppSelector(state=> state.products)
     const navigate = useNavigate();
     const handleMouseEnter = (e: React.MouseEvent<HTMLImageElement>) => {
@@ -34,6 +37,8 @@ const HorizontalScroll = ({ products, imgHeight, prefix }: TScrollProps) => {
         const originalSrc = products[index].img[0];
         if (originalSrc) e.currentTarget.src = originalSrc;
     };
+
+
 
 if(error) {
     return(
@@ -65,7 +70,8 @@ if(error) {
             width: "max-content",
             }}
         >
-            {products.map((item, index) => (
+            {products.map((item, index) => {
+            return(
             <motion.div
                 key={index}
                 style={{
@@ -78,12 +84,15 @@ if(error) {
                 style={{
                     position: "absolute",
                     top: "10px",
-                    right: "10px",
+                    right: "50px",
                     zIndex: 10,
                 }}
                 >
-                    <p className="text-decoration-underline text-primary fw-medium">${item.price.toFixed(2)}</p>
+                    <p className="text-decoration-underline text-primary fw-light">${item.price.toFixed(2)}</p>
                 </div>
+
+                {/* Like Button */}
+                <LikeButton product={item} />
 
                 <img
                 src={item.img[0]}
@@ -104,7 +113,7 @@ if(error) {
                 onDoubleClick={()=>navigate(`/product/${item.id}`)}
                 />
             </motion.div>
-            ))}
+        )})}
             <Button
             onClick={()=>navigate(`categories/products/${prefix}`)}
                 style={{ marginLeft: "20px" }}
@@ -130,5 +139,4 @@ if(error) {
         </div>
     );
 };
-
 export default HorizontalScroll;

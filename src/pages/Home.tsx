@@ -9,8 +9,8 @@ import useHome from "@hooks/useHome";
 
 export default function Home() {
   const {
-          first10Men,
-          first10Women,
+          womenProductsFullInfo,
+          menProductsFullInfo,
           isSmallScreen,
           isMedScreen,
           token,
@@ -59,7 +59,6 @@ export default function Home() {
                 variant="light"
                 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)" }}
                 size="lg"
-                // onClick={() => navigate("/categories")}
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               >
@@ -89,20 +88,20 @@ export default function Home() {
           <h2 className="fw-bold">Discover Our Latest Collection</h2>
           <p className="text-muted">Shop the newest exclusive products</p>
           <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
-        <ProductCarousel products={first10Men}  carouselHeight="40vh" imgHeight="35vh"/>
+        <ProductCarousel products={menProductsFullInfo}  carouselHeight="40vh" imgHeight="35vh"/>
           <h2 className="mt-5 fw-bold">Weekly Deals</h2>
           <p className="text-muted">Get these discounts before they're gone!</p>
-        <ProductCarousel products={first10Women}  carouselHeight="40vh" imgHeight="35vh"/>
+        <ProductCarousel products={womenProductsFullInfo}  carouselHeight="40vh" imgHeight="35vh"/>
     </div>
       ):(
         <div className="py-5 text-center">
           <h2 className="fw-bold fs-1">Discover Our Latest Collection</h2>
           <p className="text-muted fs-4">Shop the newest exclusive products</p>
           <p className="mb-5 fw-lighter fs-6">Double click image to see more..</p>
-          <HorizontalScroll prefix="men" products={first10Men} imgHeight="400px" ></HorizontalScroll>
+          <HorizontalScroll prefix="men" products={menProductsFullInfo} imgHeight="400px" ></HorizontalScroll>
           <h2 className="mt-5 fw-bold fs-1">Weekly Deals</h2>
           <p className=" text-muted mb-5 fs-4">Get these discounts before they're gone!</p>
-          <HorizontalScroll prefix="women" products={first10Women} imgHeight="400px"></HorizontalScroll>
+          <HorizontalScroll prefix="women" products={womenProductsFullInfo} imgHeight="400px"></HorizontalScroll>
         </div>
       )
   }
@@ -233,10 +232,6 @@ export default function Home() {
         </Col>
       </Row>
     </motion.div>
-
-
-
-
 
 
 {/* footer */}

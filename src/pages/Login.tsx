@@ -21,7 +21,7 @@ if(accessToken){
   return <Navigate to="/" />
 }
   return (
-      <Container>
+<Container className="bg-body-tertiary min-vh-100 pt-1 pt-md-4 shadow">
       <Heading title='User Login'/>
       <Row>
         <Col md={{span:6, offset:3}}>

@@ -18,5 +18,5 @@ export{ Header,
     ProductCarousel,
     Reviews,
     RatingStars,
-    LoginModal
+    LoginModal,
 };

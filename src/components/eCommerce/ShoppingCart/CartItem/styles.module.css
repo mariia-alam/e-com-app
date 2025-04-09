@@ -31,10 +31,7 @@
     flex-direction:column;
     justify-content:space-around;
 }
-.customButton{
-    color: white !important;
-    background-color: var(--background-color) !important;
-}
+
 .customBadge {
 	background: var(--primary-color);
     font-size: 15px !important;

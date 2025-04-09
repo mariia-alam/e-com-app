@@ -9,13 +9,15 @@ interface IWishListState {
     productsFullInfo: Tproducts[];
     error: null | string;
     loading: Tloading;
+    likeLoadingIds: number[];
 
 }
 const initialState : IWishListState = {
     itemsId:[],
     productsFullInfo:[],
     error:null,
-    loading:"idle"
+    loading:"idle",
+    likeLoadingIds:[]
 }
 const wishListSlice = createSlice({
     name:"wishlist",
@@ -26,21 +28,24 @@ const wishListSlice = createSlice({
         },
     },
     extraReducers:(builder)=>{
-        builder.addCase(actLikeToggle.pending, (state)=>{
+        builder.addCase(actLikeToggle.pending, (state, action)=>{
             state.error = null;
+            state.likeLoadingIds.push(action.meta.arg);
         })
         builder.addCase(actLikeToggle.fulfilled, (state, action)=>{
-            if(action.payload.type==="add"){
-                state.itemsId.push(action.payload.id)
-            }else{
-                state.itemsId = state.itemsId.filter((el)=> el !== action.payload.id);
-                state.productsFullInfo = state.productsFullInfo.filter(el=> el.id!== action.payload.id)
+            state.likeLoadingIds = state.likeLoadingIds.filter(id => id !== action.payload.id);
+            if (action.payload.type === "add") {
+                state.itemsId.push(action.payload.id);
+            } else {
+                state.itemsId = state.itemsId.filter((el) => el !== action.payload.id);
+                state.productsFullInfo = state.productsFullInfo.filter(el => el.id !== action.payload.id);
             }
         })
         builder.addCase(actLikeToggle.rejected, (state, action)=>{
             if(action.payload && typeof action.payload === "string"){
                 state.error = action.payload;
             }
+                state.likeLoadingIds = state.likeLoadingIds.filter(id => id !== action.meta.arg);
         });
         //get wishlist items
         builder.addCase(actGetWishList.pending, (state)=>{

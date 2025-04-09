@@ -1,9 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import actGetProductById from '@store/products/act/actGetProductById';
 import { useParams , useNavigate } from 'react-router-dom';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { productCleanup } from '@store/products/productsSlice';
-import { actUpdateCart } from '@store/Cart/cartSlice';
 
 const useProductDetails = () => {
 
@@ -17,7 +16,6 @@ const useProductDetails = () => {
 
     const {accessToken:userAccessToken, user} = useAppSelector(state => state.auth)
 
-    const [addLoading, setAddLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     const [comment, setComment] = useState('');
@@ -26,7 +24,7 @@ const useProductDetails = () => {
     const [selectedColor, setSelectedColor] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
 
-    const colors = ['Black', 'Gray', 'Beige', "lightgreen"];
+    const colors = ['Black', 'Gray', 'Beige'];
     const sizes = ['S', 'M', 'L', 'XL'];
 
     const [reviews, setReviews] = useState([
@@ -38,29 +36,21 @@ const useProductDetails = () => {
     ]);
 
 
-
-    const productFullInfo = useMemo(() => ({
-        ...product,
-        quantity: cartItems[Number(id)] || 0,
-        isLiked: wishListItemsId.includes(Number(id)),
-        isAuthenticated: !!userAccessToken,
-    }), [product, cartItems, id, wishListItemsId, userAccessToken]);
+    const productFullInfo = useMemo(() => {
+        if (!product) {
+            return;
+        }
+        return {
+            ...product,
+            quantity: cartItems[product.id] || 0,
+            isLiked: wishListItemsId.includes(product.id),
+            isAuthenticated: userAccessToken ? true : false,
+        };
+    }, [product, cartItems, wishListItemsId, userAccessToken]);
 
 
     const currentRemainingQuantity =( productFullInfo?.max ?? 0) - (productFullInfo?.quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <=0 ? true : false;
-
-    const addToCartHandler = useCallback(() => {
-        if (!userAccessToken) {
-            setShowModal(true);
-        } else {
-            setAddLoading(true);
-            setTimeout(() => {
-                dispatch(actUpdateCart({ productId: Number(id), quantity: 1, actionType: "addItem" }));
-                setAddLoading(false);
-            }, 500);
-        }
-    }, [userAccessToken, dispatch, id]);
 
 
     const handleAddComment = () => {
@@ -104,11 +94,9 @@ const useProductDetails = () => {
         colors,
         sizes,
         handleAddComment,
-        addToCartHandler,
         showModal,
         setShowModal,
         displayedReviews,
-        addLoading,
         quantityReachedToMax,
         currentRemainingQuantity
     }

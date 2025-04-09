@@ -14,7 +14,6 @@ export default function useWishList() {
         quantity:cartItems[el.id] || 0,
         isLiked: true,
         isAuthenticated:true,
-
     }))
 
     useEffect(()=>{

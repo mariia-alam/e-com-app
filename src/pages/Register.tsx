@@ -23,8 +23,8 @@ if(accessToken){
 }
 
   return (
-      <Container>
-      <Heading title='User Registration'/>
+<Container className="bg-body-tertiary min-vh-100 pt-1 pt-md-4 shadow">
+    <Heading title='User Registration'/>
       <Row>
         <Col md={{span:6, offset:3}}>
           <Form onSubmit={handleSubmit(submitForm)}>

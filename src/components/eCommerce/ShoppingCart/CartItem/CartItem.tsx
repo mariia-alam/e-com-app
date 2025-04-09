@@ -74,8 +74,7 @@ const CartItem = memo( ({title, id , img, price , cat_prefix, max , quantity, ch
                     </Form.Select>
                 </div>
                 <MotionButton
-                    className={styles.customButton}
-                    variant=""
+                    variant="outline-dark"
                     onClick={remove}
                     whileTap={{ scale: [0.8,1] }}
                 >
