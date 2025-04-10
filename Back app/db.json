@@ -646,15 +646,63 @@
     }
   ],
   "cart": [],
-  "wishlist": [],
+  "wishlist": [
+    {
+      "userId": 1,
+      "productId": 40,
+      "id": 1
+    }
+  ],
   "orders": [],
-  "reviews": [
+  "appReviews": [
     {
       "userId": 1,
       "userName": "Maria Alam",
       "rate": 5,
       "comment": "Amazing quality and fast delivery! Highly recommended",
       "id": 1
+    }
+  ],
+  "productReviews": [
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 4,
+      "comment": "Perfect fit and color!",
+      "productId": 9,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 4,
+      "comment": "Loved the quality!",
+      "productId": 11,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 3,
+      "comment": "Nice product but delivery was late",
+      "productId": 18,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 5,
+      "comment": "Great price!",
+      "productId": 44,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "userName": "Maria Alam",
+      "rate": 4,
+      "comment": "Perfect fit and color!",
+      "productId": 46,
+      "id": 5
     }
   ]
 }

@@ -90,8 +90,9 @@ const About = () => {
       initial= {{ opacity: 0,y: 100 }}
       whileInView= {{ opacity: 1, y: 0 }}
       transition= {{ duration: 1, ease: "easeOut"}}
-      className="text-center mb-5">
-        <Reviews/>
+      className="mb-5">
+        <h2 className="text-center">Customer Reviews</h2>
+        <Reviews page="about"/>
       </motion.div>
   </Container>
 

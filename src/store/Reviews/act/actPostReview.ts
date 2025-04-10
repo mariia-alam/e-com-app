@@ -5,12 +5,18 @@ import {AxiosErrorHandler} from "@util";
 
 
 const actPostReview = createAsyncThunk("reviews/actPostReview",
-    async(review: TReview,thunkAPI)=>{
+    async ({ page, review }: { page: string; review: TReview }, thunkAPI) => {
+
         const {rejectWithValue} = thunkAPI;
 
         try{
-                const response  = await axios.post("/reviews",review);
+            if(page ==="about"){
+                const response  = await axios.post("/appReviews",review);
                 return response.data;
+            }else{
+                const response  = await axios.post("/productReviews",review);
+                return response.data;
+            }
         }catch(error){
             return rejectWithValue(AxiosErrorHandler(error));
         }

@@ -1,39 +1,24 @@
 import useProductDetails from '@hooks/useProductDetails';
-import { Container, Row, Col, Carousel, Form, Button,ListGroup, Card } from 'react-bootstrap';
+import { Container, Row, Col, Carousel, Form, Button } from 'react-bootstrap';
 import { LikeButton } from '@components/eCommerce';
-import { LoginModal } from '@components/common';
 import AddToCartButton from '@components/eCommerce/ShoppingCart/AddToCartButton/AddToCartButton';
+import { Reviews } from '@components/common';
 export default function ProductDetails() {
     const {
         navigate,
         productFullInfo,
-        comment,
-        reviews,
-        setComment,
-        showAll,
-        setShowAll,
         selectedColor,
         selectedSize,
         setSelectedColor,
         setSelectedSize,
         colors,
         sizes,
-        handleAddComment,
-        showModal,
-        setShowModal,
-        displayedReviews,
         quantityReachedToMax,
         currentRemainingQuantity
     } = useProductDetails();
 
 return (
 <Container className="my-5">
-    <LoginModal
-        title='Login Required'
-        body='You must be logged in to leave a comment'
-        onClose={()=> setShowModal(false)}
-        show={showModal}
-    />
 
     <Row className='mb-5'>
         <Col md={6}>
@@ -100,7 +85,12 @@ return (
             </div>
             </Form.Group>
 
-            {quantityReachedToMax ? <p className="text-danger">maximum limit Reached</p> : <p>You can add {currentRemainingQuantity} items</p>}
+            {productFullInfo && !quantityReachedToMax
+                ? <p>You can add {currentRemainingQuantity} items</p>
+                : quantityReachedToMax && productFullInfo
+                ? <p className="text-danger">maximum limit Reached</p>
+                : null
+            }
             <div className='d-flex flex-row gap-2 w-100'>
                 <AddToCartButton
                     productId={productFullInfo?.id || 0}
@@ -111,77 +101,14 @@ return (
                     Back
                 </Button>
             </div>
-        </Form>
+
+            </Form>
         </Col>
 
     </Row>
 
     <Row>
-    <Card className="mt-5">
-        <Card.Body>
-            <Card.Title>Customer Reviews</Card.Title>
-                <ListGroup variant="flush" className="mb-3">
-                {displayedReviews.map((review) => {
-                    const firstLetter = review.user.charAt(0).toUpperCase();
-                    return (
-                    <ListGroup.Item
-                        key={review.id}
-                        className="d-flex align-items-start gap-3"
-                    >
-                        {/* User initial circle */}
-                        <div
-                        className="d-flex justify-content-center align-items-center flex-shrink-0"
-                        style={{
-                            backgroundColor: '#ccc',
-                            borderRadius: '50%',
-                            width: '40px',
-                            height: '40px',
-                            fontSize: '18px',
-                            color: 'white',
-                            textTransform: 'uppercase',
-                        }}
-                        >
-                        {firstLetter}
-                        </div>
-
-                        {/* Comment content */}
-                        <div className="flex-grow-1">
-                        <strong>{review.user}</strong>: {review.comment}
-                        </div>
-                    </ListGroup.Item>
-                    );
-                })}
-                </ListGroup>
-
-
-            {reviews.length > 3 && (
-            <Button
-                variant="link"
-                onClick={() => setShowAll(prev => !prev)}
-                className="p-0 mb-3"
-            >
-                {showAll ? 'See less' : 'See more'}
-            </Button>
-            )}
-
-            <Form>
-            <Form.Group className="mb-3" controlId="comment">
-                <Form.Label>Write a review</Form.Label>
-                <Form.Control
-                as="textarea"
-                rows={2}
-                value={comment}
-                onChange={e => setComment(e.target.value)}
-                placeholder="Your comment..."
-                />
-            </Form.Group>
-            <Button variant="primary" onClick={handleAddComment}>
-                Submit Review
-            </Button>
-            </Form>
-        </Card.Body>
-        </Card>
-
+    <Reviews page='productDetails'/>
     </Row>
 </Container>
 );

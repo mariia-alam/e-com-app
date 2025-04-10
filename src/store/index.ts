@@ -15,7 +15,7 @@ import storage from "redux-persist/lib/storage";
 import wishListSlice from "@store/WishList/wishListSlice"
 import authSlice from "./auth/authSlice"
 import orderSlice from '@store/order/orderSlice'
-import ReviewsSlice from "@store/reviews/ReviewsSlice"
+import ReviewsSlice from "@store/Reviews/ReviewsSlice"
 
 const rootPersistConfig = {
     key:"root",
